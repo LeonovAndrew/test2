@@ -1,5 +1,5 @@
 <?php include_once __DIR__."/header.php";?>
-    <section>
+<section>
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
@@ -299,25 +299,25 @@
         </div>
     </div>
 </section>
-<section>
+<section class="sect_wrap">
     <div class="container">
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#home">Описание</a>
+                <a class="nav-link active" data-toggle="tab" href="#opisanie">Описание</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#menu1">Характеристики</a>
+                <a class="nav-link" data-toggle="tab" href="#haracterist">Характеристики</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#menu2">Отзывы</a>
+                <a class="nav-link" data-toggle="tab" href="#comment">Отзывы</a>
             </li>
         </ul>
 
         <!-- Tab panes -->
         <div class="tab-content">
-            <div id="home" class="container tab-pane active"><br>
-                <div class="opisanie">
+            <div id="opisanie" class="container tab-pane active"><br>
+                <div class="tabs_wrap">
                     <p>Компания Custom Water Pipes (CWP) набирает свои обороты с 2009 года и это уже делеко не маленький срок. По 2014 год компания выпускала только стеклянные дизайнерские кальяны такие как Gravity, Original, Shifter, а в конце 2014 года ребята задумались о производстве не только стекла , но и  шахты. Этот шаг оказался верным, потому что стекло останется стеклом, а металлическая шахта - это классика.  Так на свете появился кальян CWP Razor. Как и многие современные продукты рынка, кальян производится в Китае, но это никак не влияет на качества этого кальяна.
 
                     <p>Немного скучной ерунды для тех кто любит цифры:<br>
@@ -335,13 +335,1017 @@
                     <p>Просто покурите на этом кальяне, чтобы понять ваш это кальян или нет. Все станет ясно после первой тяги.
                 </div>
             </div>
-            <div id="menu1" class="container tab-pane fade"><br>
-                <h3>Menu 1</h3>
-                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <div id="haracterist" class="container tab-pane fade"><br>
+                <div class="tabs_wrap">
+                    <table class="det_table_haract">
+                        <tr>
+                            <td class="table_haract_name">
+                                Высота
+                            </td>
+                            <td  class="table_haract_fact text_inf">
+                                35 см
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="table_haract_name">
+                                Комплектация
+                            </td>
+                            <td  class="table_haract_fact text_inf">
+                                шахта, блюдце, колба
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="table_haract_name">
+                                Материал
+                                колбы
+                            </td>
+                            <td  class="table_haract_fact text_inf">
+                                Стекло
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="table_haract_name">
+                                Материал
+                                шахты
+                            </td>
+                            <td  class="table_haract_fact text_inf">
+                                Анодированный алюминий,
+                                Нержавейка
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="table_haract_name">
+                                Тип соединения
+                            </td>
+                            <td  class="table_haract_fact text_inf">
+                                Кликовое
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="table_haract_name">
+                                Цвет колбы
+                            </td>
+                            <td  class="table_haract_fact text_inf">
+                                Прозрачный
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
-            <div id="menu2" class="container tab-pane fade"><br>
-                <h3>Menu 2</h3>
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+            <div id="comment" class="container tab-pane fade"><br>
+                <div class="tabs_wrap">
+                    <div class="comment_list_wrap">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="row ">
+                                   <div class="col-3">
+                                       <div class="comment_img_wrap">
+                                           <img src="image/otz1.png" alt="otz">
+                                       </div>
+                                   </div>
+                                   <div class="col-9">
+                                       <div class="comment_text_wrap">
+                                           <h4>Денис Привальнев</h4>
+                                           <p>
+                                               Хороший кальян. Продавец предложил несколько вариантов табака, обсудили все нюансы, также прикупил новую чашу "Облако". Быстро привезли заказ. У ребят доставка кстати от 5000 руб. - Бесплатно.
+                                           </p>
+                                       </div>
+                                   </div>
+                               </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <div class="comment_img_wrap">
+                                            <img src="image/otz1.png" alt="otz">
+                                        </div>
+                                    </div>
+                                    <div class="col-9">
+                                        <div class="comment_text_wrap">
+                                            <h4>Денис Привальнев</h4>
+                                            <p>
+                                                Хороший кальян. Продавец предложил несколько вариантов табака, обсудили все нюансы, также прикупил новую чашу "Облако". Быстро привезли заказ. У ребят доставка кстати от 5000 руб. - Бесплатно.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comment_add_wrap">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <h4>Оставить свой отзыв</h4>
+                                <form action="/action_reg.php" class="main_form">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control"  placeholder="Имя" name="name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" placeholder="E-mail" name="mail" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea class="form-control" rows="5" maxlength="1000" placeholder="Введите сообщение. Не более 10000 символов"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn_main">Отправить</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="sect_wrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="title">С этим товаром покупают</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="slider_product">
+                    <div class="slider_product_item">
+                        <div class="product_wrap">
+                            <div class="prod_img_wrap">
+                                <a href="/product/detal.php">
+                                    <img src="image/prod/pr1.png" alt="prod">
+                                    <ul class="prod_label_inf">
+                                        <li>
+                                            <img src="image/svg/new.svg" alt="new">
+                                        </li>
+                                    </ul>
+                                </a>
+                            </div>
+                            <div class="prod_inf_wrap">
+                                <div class="prod_name_wrap">
+                                    <p class="text_inf">
+                                        Кальян Alpha Hookah X Black
+                                        atte (Черный мат)
+                                    </p>
+                                </div>
+                                <div class="prod_prise_wrap">
+                                    <div class="price_wrap">
+                                        <div class="prise_new_wrap">
+                                            <span class="price">2500р</span>
+                                        </div>
+                                        <div class="prise_old_wrap">
+                                            <span class="old_prise text_inf">3500р</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="desk_fav_btn_wrap">
+                                    <ul class="shop_icon_list">
+                                        <li>
+                                            <a href="#" class="shop_icon_link " data-toggle="tooltip" data-placement="top" title="сравнить">
+                                                    <span class="shop_icon_svg">
+                                                        <img src="image/svg/sr.svg" alt="Сравнить">
+                                                    </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="shop_icon_link " data-toggle="tooltip" data-placement="top" title="избранное">
+                                                    <span class="shop_icon_svg heart">
+                                                        <img src="image/svg/iz.svg" alt="избранное">
+                                                    </span>
+                                            </a>
+                                        </li>
+                                        <li class="cart_for_mob">
+                                            <a href="#" class="shop_icon_link" data-toggle="tooltip" data-placement="top" title="в корзину">
+                                                <span class="shop_icon_svg">
+                                                    <img src="image/svg/cart_light.svg" alt="Корзина">
+                                                </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="prod_btn_wrap">
+                                    <button class="btn_main">
+                                        В корзину
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider_product_item">
+                        <div class="product_wrap">
+                            <div class="prod_img_wrap">
+                                <a href="/product/detal.php">
+                                    <img src="image/prod/pr2.png" alt="prod">
+                                    <ul class="prod_label_inf">
+                                        <li>
+                                            <img src="image/svg/new.svg" alt="new">
+                                        </li>
+                                    </ul>
+                                </a>
+                            </div>
+                            <div class="prod_inf_wrap">
+                                <div class="prod_name_wrap">
+                                    <p class="text_inf">
+                                        Кальян Alpha Hookah X Black
+                                        atte (Черный мат)
+                                    </p>
+                                </div>
+                                <div class="prod_prise_wrap">
+                                    <div class="price_wrap">
+                                        <div class="prise_new_wrap">
+                                            <span class="price">2500р</span>
+                                        </div>
+                                        <div class="prise_old_wrap">
+                                            <span class="old_prise text_inf">3500р</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="desk_fav_btn_wrap">
+                                    <ul class="shop_icon_list">
+                                        <li>
+                                            <a href="#" class="shop_icon_link " data-toggle="tooltip" data-placement="top" title="сравнить">
+                                                    <span class="shop_icon_svg">
+                                                        <img src="image/svg/sr.svg" alt="Сравнить">
+                                                    </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="shop_icon_link " data-toggle="tooltip" data-placement="top" title="избранное">
+                                                    <span class="shop_icon_svg heart">
+                                                        <img src="image/svg/iz.svg" alt="избранное">
+                                                    </span>
+                                            </a>
+                                        </li>
+                                        <li class="cart_for_mob">
+                                            <a href="#" class="shop_icon_link" data-toggle="tooltip" data-placement="top" title="в корзину">
+                                                <span class="shop_icon_svg">
+                                                    <img src="image/svg/cart_light.svg" alt="Корзина">
+                                                </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="prod_btn_wrap">
+                                    <button class="btn_main">
+                                        В корзину
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider_product_item">
+                        <div class="product_wrap">
+                            <div class="prod_img_wrap">
+                                <a href="/product/detal.php">
+                                    <img src="image/prod/pr3.png" alt="prod">
+                                    <ul class="prod_label_inf">
+                                    </ul>
+                                </a>
+                            </div>
+                            <div class="prod_inf_wrap">
+                                <div class="prod_name_wrap">
+                                    <p class="text_inf">
+                                        Кальян Alpha Hookah X Black
+                                        atte (Черный мат)
+                                    </p>
+                                </div>
+                                <div class="prod_prise_wrap">
+                                    <div class="price_wrap">
+                                        <div class="prise_new_wrap">
+                                            <span class="price">2500р</span>
+                                        </div>
+                                        <div class="prise_old_wrap">
+                                            <span class="old_prise text_inf">3500р</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="desk_fav_btn_wrap">
+                                    <ul class="shop_icon_list">
+                                        <li>
+                                            <a href="#" class="shop_icon_link " data-toggle="tooltip" data-placement="top" title="сравнить">
+                                                    <span class="shop_icon_svg">
+                                                        <img src="image/svg/sr.svg" alt="Сравнить">
+                                                    </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="shop_icon_link " data-toggle="tooltip" data-placement="top" title="избранное">
+                                                    <span class="shop_icon_svg heart">
+                                                        <img src="image/svg/iz.svg" alt="избранное">
+                                                    </span>
+                                            </a>
+                                        </li>
+                                        <li class="cart_for_mob">
+                                            <a href="#" class="shop_icon_link" data-toggle="tooltip" data-placement="top" title="в корзину">
+                                                <span class="shop_icon_svg">
+                                                    <img src="image/svg/cart_light.svg" alt="Корзина">
+                                                </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="prod_btn_wrap">
+                                    <button class="btn_main">
+                                        В корзину
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider_product_item">
+                        <div class="product_wrap">
+                            <div class="prod_img_wrap">
+                                <a href="/product/detal.php">
+                                    <a href="/product/detal.php">
+                                        <img src="image/prod/pr4.png" alt="prod">
+                                        <ul class="prod_label_inf">
+                                            <li>
+                                                <img src="image/svg/new.svg" alt="new">
+                                            </li>
+                                        </ul>
+                                    </a>
+                                </a>
+                            </div>
+                            <div class="prod_inf_wrap">
+                                <div class="prod_name_wrap">
+                                    <p class="text_inf">
+                                        Кальян Alpha Hookah X Black
+                                        atte (Черный мат)
+                                    </p>
+                                </div>
+                                <div class="prod_prise_wrap">
+                                    <div class="price_wrap">
+                                        <div class="prise_new_wrap">
+                                            <span class="price">2500р</span>
+                                        </div>
+                                        <div class="prise_old_wrap">
+                                            <span class="old_prise text_inf">3500р</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="desk_fav_btn_wrap">
+                                    <ul class="shop_icon_list">
+                                        <li>
+                                            <a href="#" class="shop_icon_link " data-toggle="tooltip" data-placement="top" title="сравнить">
+                                                    <span class="shop_icon_svg">
+                                                        <img src="image/svg/sr.svg" alt="Сравнить">
+                                                    </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="shop_icon_link " data-toggle="tooltip" data-placement="top" title="избранное">
+                                                    <span class="shop_icon_svg heart">
+                                                        <img src="image/svg/iz.svg" alt="избранное">
+                                                    </span>
+                                            </a>
+                                        </li>
+                                        <li class="cart_for_mob">
+                                            <a href="#" class="shop_icon_link" data-toggle="tooltip" data-placement="top" title="в корзину">
+                                                <span class="shop_icon_svg">
+                                                    <img src="image/svg/cart_light.svg" alt="Корзина">
+                                                </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="prod_btn_wrap">
+                                    <button class="btn_main">
+                                        В корзину
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider_product_item">
+                        <div class="product_wrap">
+                            <div class="prod_img_wrap">
+                                <a href="/product/detal.php">
+                                    <img src="image/prod/pr5.png" alt="prod">
+                                    <ul class="prod_label_inf">
+                                        <li>
+                                            <img src="image/svg/new.svg" alt="new">
+                                        </li>
+                                    </ul>
+                                </a>
+                            </div>
+                            <div class="prod_inf_wrap">
+                                <div class="prod_name_wrap">
+                                    <p class="text_inf">
+                                        Кальян Alpha Hookah X Black
+                                        atte (Черный мат)
+                                    </p>
+                                </div>
+                                <div class="prod_prise_wrap">
+                                    <div class="price_wrap">
+                                        <div class="prise_new_wrap">
+                                            <span class="price">2500р</span>
+                                        </div>
+                                        <div class="prise_old_wrap">
+                                            <span class="old_prise text_inf">3500р</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="desk_fav_btn_wrap">
+                                    <ul class="shop_icon_list">
+                                        <li>
+                                            <a href="#" class="shop_icon_link " data-toggle="tooltip" data-placement="top" title="сравнить">
+                                                    <span class="shop_icon_svg">
+                                                        <img src="image/svg/sr.svg" alt="Сравнить">
+                                                    </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="shop_icon_link " data-toggle="tooltip" data-placement="top" title="избранное">
+                                                    <span class="shop_icon_svg heart">
+                                                        <img src="image/svg/iz.svg" alt="избранное">
+                                                    </span>
+                                            </a>
+                                        </li>
+                                        <li class="cart_for_mob">
+                                            <a href="#" class="shop_icon_link" data-toggle="tooltip" data-placement="top" title="в корзину">
+                                                <span class="shop_icon_svg">
+                                                    <img src="image/svg/cart_light.svg" alt="Корзина">
+                                                </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="prod_btn_wrap">
+                                    <button class="btn_main">
+                                        В корзину
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider_product_item">
+                        <div class="product_wrap">
+                            <div class="prod_img_wrap">
+                                <a href="/product/detal.php">
+                                    <img src="image/prod/pr6.png" alt="prod">
+                                    <ul class="prod_label_inf">
+                                        <li>
+                                            <img src="image/svg/new.svg" alt="new">
+                                        </li>
+                                    </ul>
+                                </a>
+                            </div>
+                            <div class="prod_inf_wrap">
+                                <div class="prod_name_wrap">
+                                    <p class="text_inf">
+                                        Кальян Alpha Hookah X Black
+                                        atte (Черный мат)
+                                    </p>
+                                </div>
+                                <div class="prod_prise_wrap">
+                                    <div class="price_wrap">
+                                        <div class="prise_new_wrap">
+                                            <span class="price">2500р</span>
+                                        </div>
+                                        <div class="prise_old_wrap">
+                                            <span class="old_prise text_inf">3500р</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="desk_fav_btn_wrap">
+                                    <ul class="shop_icon_list">
+                                        <li>
+                                            <a href="#" class="shop_icon_link " data-toggle="tooltip" data-placement="top" title="сравнить">
+                                                    <span class="shop_icon_svg">
+                                                        <img src="image/svg/sr.svg" alt="Сравнить">
+                                                    </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="shop_icon_link " data-toggle="tooltip" data-placement="top" title="избранное">
+                                                    <span class="shop_icon_svg heart">
+                                                        <img src="image/svg/iz.svg" alt="избранное">
+                                                    </span>
+                                            </a>
+                                        </li>
+                                        <li class="cart_for_mob">
+                                            <a href="#" class="shop_icon_link" data-toggle="tooltip" data-placement="top" title="в корзину">
+                                                <span class="shop_icon_svg">
+                                                    <img src="image/svg/cart_light.svg" alt="Корзина">
+                                                </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="prod_btn_wrap">
+                                    <button class="btn_main">
+                                        В корзину
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider_product_item">
+                        <div class="product_wrap">
+                            <div class="prod_img_wrap">
+                                <a href="/product/detal.php">
+                                    <img src="image/prod/pr7.png" alt="prod">
+                                    <ul class="prod_label_inf">
+                                        <li>
+                                            <img src="image/svg/new.svg" alt="new">
+                                        </li>
+                                    </ul>
+                                </a>
+                            </div>
+                            <div class="prod_inf_wrap">
+                                <div class="prod_name_wrap">
+                                    <p class="text_inf">
+                                        Кальян Alpha Hookah X Black
+                                        atte (Черный мат)
+                                    </p>
+                                </div>
+                                <div class="prod_prise_wrap">
+                                    <div class="price_wrap">
+                                        <div class="prise_new_wrap">
+                                            <span class="price">2500р</span>
+                                        </div>
+                                        <div class="prise_old_wrap">
+                                            <span class="old_prise text_inf">3500р</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="desk_fav_btn_wrap">
+                                    <ul class="shop_icon_list">
+                                        <li>
+                                            <a href="#" class="shop_icon_link " data-toggle="tooltip" data-placement="top" title="сравнить">
+                                                    <span class="shop_icon_svg">
+                                                        <img src="image/svg/sr.svg" alt="Сравнить">
+                                                    </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="shop_icon_link " data-toggle="tooltip" data-placement="top" title="избранное">
+                                                    <span class="shop_icon_svg heart">
+                                                        <img src="image/svg/iz.svg" alt="избранное">
+                                                    </span>
+                                            </a>
+                                        </li>
+                                        <li class="cart_for_mob">
+                                            <a href="#" class="shop_icon_link" data-toggle="tooltip" data-placement="top" title="в корзину">
+                                                <span class="shop_icon_svg">
+                                                    <img src="image/svg/cart_light.svg" alt="Корзина">
+                                                </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="prod_btn_wrap">
+                                    <button class="btn_main">
+                                        В корзину
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="sect_wrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="title">Вы недавно смотрели</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="slider_product">
+                    <div class="slider_product_item">
+                        <div class="product_wrap">
+                            <div class="prod_img_wrap">
+                                <a href="/product/detal.php">
+                                    <img src="image/prod/pr1.png" alt="prod">
+                                    <ul class="prod_label_inf">
+                                        <li>
+                                            <img src="image/svg/new.svg" alt="new">
+                                        </li>
+                                    </ul>
+                                </a>
+                            </div>
+                            <div class="prod_inf_wrap">
+                                <div class="prod_name_wrap">
+                                    <p class="text_inf">
+                                        Кальян Alpha Hookah X Black
+                                        atte (Черный мат)
+                                    </p>
+                                </div>
+                                <div class="prod_prise_wrap">
+                                    <div class="price_wrap">
+                                        <div class="prise_new_wrap">
+                                            <span class="price">2500р</span>
+                                        </div>
+                                        <div class="prise_old_wrap">
+                                            <span class="old_prise text_inf">3500р</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="desk_fav_btn_wrap">
+                                    <ul class="shop_icon_list">
+                                        <li>
+                                            <a href="#" class="shop_icon_link " data-toggle="tooltip" data-placement="top" title="сравнить">
+                                                    <span class="shop_icon_svg">
+                                                        <img src="image/svg/sr.svg" alt="Сравнить">
+                                                    </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="shop_icon_link " data-toggle="tooltip" data-placement="top" title="избранное">
+                                                    <span class="shop_icon_svg heart">
+                                                        <img src="image/svg/iz.svg" alt="избранное">
+                                                    </span>
+                                            </a>
+                                        </li>
+                                        <li class="cart_for_mob">
+                                            <a href="#" class="shop_icon_link" data-toggle="tooltip" data-placement="top" title="в корзину">
+                                                <span class="shop_icon_svg">
+                                                    <img src="image/svg/cart_light.svg" alt="Корзина">
+                                                </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="prod_btn_wrap">
+                                    <button class="btn_main">
+                                        В корзину
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider_product_item">
+                        <div class="product_wrap">
+                            <div class="prod_img_wrap">
+                                <a href="/product/detal.php">
+                                    <img src="image/prod/pr2.png" alt="prod">
+                                    <ul class="prod_label_inf">
+                                        <li>
+                                            <img src="image/svg/new.svg" alt="new">
+                                        </li>
+                                    </ul>
+                                </a>
+                            </div>
+                            <div class="prod_inf_wrap">
+                                <div class="prod_name_wrap">
+                                    <p class="text_inf">
+                                        Кальян Alpha Hookah X Black
+                                        atte (Черный мат)
+                                    </p>
+                                </div>
+                                <div class="prod_prise_wrap">
+                                    <div class="price_wrap">
+                                        <div class="prise_new_wrap">
+                                            <span class="price">2500р</span>
+                                        </div>
+                                        <div class="prise_old_wrap">
+                                            <span class="old_prise text_inf">3500р</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="desk_fav_btn_wrap">
+                                    <ul class="shop_icon_list">
+                                        <li>
+                                            <a href="#" class="shop_icon_link " data-toggle="tooltip" data-placement="top" title="сравнить">
+                                                    <span class="shop_icon_svg">
+                                                        <img src="image/svg/sr.svg" alt="Сравнить">
+                                                    </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="shop_icon_link " data-toggle="tooltip" data-placement="top" title="избранное">
+                                                    <span class="shop_icon_svg heart">
+                                                        <img src="image/svg/iz.svg" alt="избранное">
+                                                    </span>
+                                            </a>
+                                        </li>
+                                        <li class="cart_for_mob">
+                                            <a href="#" class="shop_icon_link" data-toggle="tooltip" data-placement="top" title="в корзину">
+                                                <span class="shop_icon_svg">
+                                                    <img src="image/svg/cart_light.svg" alt="Корзина">
+                                                </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="prod_btn_wrap">
+                                    <button class="btn_main">
+                                        В корзину
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider_product_item">
+                        <div class="product_wrap">
+                            <div class="prod_img_wrap">
+                                <a href="/product/detal.php">
+                                    <img src="image/prod/pr3.png" alt="prod">
+                                    <ul class="prod_label_inf">
+                                    </ul>
+                                </a>
+                            </div>
+                            <div class="prod_inf_wrap">
+                                <div class="prod_name_wrap">
+                                    <p class="text_inf">
+                                        Кальян Alpha Hookah X Black
+                                        atte (Черный мат)
+                                    </p>
+                                </div>
+                                <div class="prod_prise_wrap">
+                                    <div class="price_wrap">
+                                        <div class="prise_new_wrap">
+                                            <span class="price">2500р</span>
+                                        </div>
+                                        <div class="prise_old_wrap">
+                                            <span class="old_prise text_inf">3500р</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="desk_fav_btn_wrap">
+                                    <ul class="shop_icon_list">
+                                        <li>
+                                            <a href="#" class="shop_icon_link " data-toggle="tooltip" data-placement="top" title="сравнить">
+                                                    <span class="shop_icon_svg">
+                                                        <img src="image/svg/sr.svg" alt="Сравнить">
+                                                    </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="shop_icon_link " data-toggle="tooltip" data-placement="top" title="избранное">
+                                                    <span class="shop_icon_svg heart">
+                                                        <img src="image/svg/iz.svg" alt="избранное">
+                                                    </span>
+                                            </a>
+                                        </li>
+                                        <li class="cart_for_mob">
+                                            <a href="#" class="shop_icon_link" data-toggle="tooltip" data-placement="top" title="в корзину">
+                                                <span class="shop_icon_svg">
+                                                    <img src="image/svg/cart_light.svg" alt="Корзина">
+                                                </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="prod_btn_wrap">
+                                    <button class="btn_main">
+                                        В корзину
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider_product_item">
+                        <div class="product_wrap">
+                            <div class="prod_img_wrap">
+                                <a href="/product/detal.php">
+                                    <a href="/product/detal.php">
+                                        <img src="image/prod/pr4.png" alt="prod">
+                                        <ul class="prod_label_inf">
+                                            <li>
+                                                <img src="image/svg/new.svg" alt="new">
+                                            </li>
+                                        </ul>
+                                    </a>
+                                </a>
+                            </div>
+                            <div class="prod_inf_wrap">
+                                <div class="prod_name_wrap">
+                                    <p class="text_inf">
+                                        Кальян Alpha Hookah X Black
+                                        atte (Черный мат)
+                                    </p>
+                                </div>
+                                <div class="prod_prise_wrap">
+                                    <div class="price_wrap">
+                                        <div class="prise_new_wrap">
+                                            <span class="price">2500р</span>
+                                        </div>
+                                        <div class="prise_old_wrap">
+                                            <span class="old_prise text_inf">3500р</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="desk_fav_btn_wrap">
+                                    <ul class="shop_icon_list">
+                                        <li>
+                                            <a href="#" class="shop_icon_link " data-toggle="tooltip" data-placement="top" title="сравнить">
+                                                    <span class="shop_icon_svg">
+                                                        <img src="image/svg/sr.svg" alt="Сравнить">
+                                                    </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="shop_icon_link " data-toggle="tooltip" data-placement="top" title="избранное">
+                                                    <span class="shop_icon_svg heart">
+                                                        <img src="image/svg/iz.svg" alt="избранное">
+                                                    </span>
+                                            </a>
+                                        </li>
+                                        <li class="cart_for_mob">
+                                            <a href="#" class="shop_icon_link" data-toggle="tooltip" data-placement="top" title="в корзину">
+                                                <span class="shop_icon_svg">
+                                                    <img src="image/svg/cart_light.svg" alt="Корзина">
+                                                </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="prod_btn_wrap">
+                                    <button class="btn_main">
+                                        В корзину
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider_product_item">
+                        <div class="product_wrap">
+                            <div class="prod_img_wrap">
+                                <a href="/product/detal.php">
+                                    <img src="image/prod/pr5.png" alt="prod">
+                                    <ul class="prod_label_inf">
+                                        <li>
+                                            <img src="image/svg/new.svg" alt="new">
+                                        </li>
+                                    </ul>
+                                </a>
+                            </div>
+                            <div class="prod_inf_wrap">
+                                <div class="prod_name_wrap">
+                                    <p class="text_inf">
+                                        Кальян Alpha Hookah X Black
+                                        atte (Черный мат)
+                                    </p>
+                                </div>
+                                <div class="prod_prise_wrap">
+                                    <div class="price_wrap">
+                                        <div class="prise_new_wrap">
+                                            <span class="price">2500р</span>
+                                        </div>
+                                        <div class="prise_old_wrap">
+                                            <span class="old_prise text_inf">3500р</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="desk_fav_btn_wrap">
+                                    <ul class="shop_icon_list">
+                                        <li>
+                                            <a href="#" class="shop_icon_link " data-toggle="tooltip" data-placement="top" title="сравнить">
+                                                    <span class="shop_icon_svg">
+                                                        <img src="image/svg/sr.svg" alt="Сравнить">
+                                                    </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="shop_icon_link " data-toggle="tooltip" data-placement="top" title="избранное">
+                                                    <span class="shop_icon_svg heart">
+                                                        <img src="image/svg/iz.svg" alt="избранное">
+                                                    </span>
+                                            </a>
+                                        </li>
+                                        <li class="cart_for_mob">
+                                            <a href="#" class="shop_icon_link" data-toggle="tooltip" data-placement="top" title="в корзину">
+                                                <span class="shop_icon_svg">
+                                                    <img src="image/svg/cart_light.svg" alt="Корзина">
+                                                </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="prod_btn_wrap">
+                                    <button class="btn_main">
+                                        В корзину
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider_product_item">
+                        <div class="product_wrap">
+                            <div class="prod_img_wrap">
+                                <a href="/product/detal.php">
+                                    <img src="image/prod/pr6.png" alt="prod">
+                                    <ul class="prod_label_inf">
+                                        <li>
+                                            <img src="image/svg/new.svg" alt="new">
+                                        </li>
+                                    </ul>
+                                </a>
+                            </div>
+                            <div class="prod_inf_wrap">
+                                <div class="prod_name_wrap">
+                                    <p class="text_inf">
+                                        Кальян Alpha Hookah X Black
+                                        atte (Черный мат)
+                                    </p>
+                                </div>
+                                <div class="prod_prise_wrap">
+                                    <div class="price_wrap">
+                                        <div class="prise_new_wrap">
+                                            <span class="price">2500р</span>
+                                        </div>
+                                        <div class="prise_old_wrap">
+                                            <span class="old_prise text_inf">3500р</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="desk_fav_btn_wrap">
+                                    <ul class="shop_icon_list">
+                                        <li>
+                                            <a href="#" class="shop_icon_link " data-toggle="tooltip" data-placement="top" title="сравнить">
+                                                    <span class="shop_icon_svg">
+                                                        <img src="image/svg/sr.svg" alt="Сравнить">
+                                                    </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="shop_icon_link " data-toggle="tooltip" data-placement="top" title="избранное">
+                                                    <span class="shop_icon_svg heart">
+                                                        <img src="image/svg/iz.svg" alt="избранное">
+                                                    </span>
+                                            </a>
+                                        </li>
+                                        <li class="cart_for_mob">
+                                            <a href="#" class="shop_icon_link" data-toggle="tooltip" data-placement="top" title="в корзину">
+                                                <span class="shop_icon_svg">
+                                                    <img src="image/svg/cart_light.svg" alt="Корзина">
+                                                </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="prod_btn_wrap">
+                                    <button class="btn_main">
+                                        В корзину
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider_product_item">
+                        <div class="product_wrap">
+                            <div class="prod_img_wrap">
+                                <a href="/product/detal.php">
+                                    <img src="image/prod/pr7.png" alt="prod">
+                                    <ul class="prod_label_inf">
+                                        <li>
+                                            <img src="image/svg/new.svg" alt="new">
+                                        </li>
+                                    </ul>
+                                </a>
+                            </div>
+                            <div class="prod_inf_wrap">
+                                <div class="prod_name_wrap">
+                                    <p class="text_inf">
+                                        Кальян Alpha Hookah X Black
+                                        atte (Черный мат)
+                                    </p>
+                                </div>
+                                <div class="prod_prise_wrap">
+                                    <div class="price_wrap">
+                                        <div class="prise_new_wrap">
+                                            <span class="price">2500р</span>
+                                        </div>
+                                        <div class="prise_old_wrap">
+                                            <span class="old_prise text_inf">3500р</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="desk_fav_btn_wrap">
+                                    <ul class="shop_icon_list">
+                                        <li>
+                                            <a href="#" class="shop_icon_link " data-toggle="tooltip" data-placement="top" title="сравнить">
+                                                    <span class="shop_icon_svg">
+                                                        <img src="image/svg/sr.svg" alt="Сравнить">
+                                                    </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="shop_icon_link " data-toggle="tooltip" data-placement="top" title="избранное">
+                                                    <span class="shop_icon_svg heart">
+                                                        <img src="image/svg/iz.svg" alt="избранное">
+                                                    </span>
+                                            </a>
+                                        </li>
+                                        <li class="cart_for_mob">
+                                            <a href="#" class="shop_icon_link" data-toggle="tooltip" data-placement="top" title="в корзину">
+                                                <span class="shop_icon_svg">
+                                                    <img src="image/svg/cart_light.svg" alt="Корзина">
+                                                </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="prod_btn_wrap">
+                                    <button class="btn_main">
+                                        В корзину
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
