@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="cf311aa6-a666-4629-8f25-ada02734cc95" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inc/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/inc/js/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/main.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -67,7 +69,7 @@
       <workItem from="1565910281078" duration="5744000" />
       <workItem from="1565952444832" duration="30664000" />
       <workItem from="1566100216535" duration="118371000" />
-      <workItem from="1566478270155" duration="99746000" />
+      <workItem from="1566478270155" duration="100503000" />
     </task>
     <servers />
   </component>
@@ -84,17 +86,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/inc/js/script.js</url>
-          <line>266</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

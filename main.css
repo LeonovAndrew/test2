@@ -505,9 +505,11 @@ ul.foot_menu_ul.last li{
     border-radius: 0;
 }
 /**********************/
-section.advance_line {
+.advance_line {
     background: #EB653B;
-    padding: 10px 0;
+    padding: 10px 0 0 0;
+    max-height: 85px;
+    overflow: hidden;
 }
 .slider_advance_line {
     color: #fff;
@@ -1508,4 +1510,8 @@ button.btn.sort_ul_btn.dropdown-toggle {
 }
 .sravnenie tr:first-child{
     vertical-align: bottom;
+}
+.hero_slider {
+    max-height: 550px;
+    overflow: hidden;
 }
