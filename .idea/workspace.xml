@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cf311aa6-a666-4629-8f25-ada02734cc95" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/srav.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/adaptive.css" beforeDir="false" afterPath="$PROJECT_DIR$/adaptive.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/detal.php" beforeDir="false" afterPath="$PROJECT_DIR$/detal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/footer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/inc/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/inc/js/script.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/main.css" afterDir="false" />
     </list>
@@ -72,7 +71,7 @@
       <workItem from="1565910281078" duration="5744000" />
       <workItem from="1565952444832" duration="30664000" />
       <workItem from="1566100216535" duration="118371000" />
-      <workItem from="1566478270155" duration="94788000" />
+      <workItem from="1566478270155" duration="99189000" />
     </task>
     <servers />
   </component>
@@ -89,5 +88,17 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/inc/js/script.js</url>
+          <line>266</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -1202,9 +1202,13 @@ button.btn.sort_ul_btn.dropdown-toggle {
 }
 .slider_for_wrap img {
     margin: auto;
+
+}
+.slider_for_wrap img:hover{
+    cursor : pointer;
 }
 
-/*************************************/
+    /*************************************/
 .stepper{
     display: inline-block;
     max-width: 120px;
@@ -1477,4 +1481,28 @@ button.btn.sort_ul_btn.dropdown-toggle {
     position: absolute;
     right: 10px;
     top: 17px;
+}
+/***************/
+.prod_sr_wrap {
+    max-width: 290px;
+    position: relative;
+}
+.img_prod_sr {
+    text-align: center;
+    position: relative;
+}
+.close_sr {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+.sravnenie{
+    width: 100%;
+}
+.sravnenie tr{
+    border-bottom: 1px solid #C5C6C6;
+    height: 60px;
+}
+.sravnenie tr:first-child{
+    vertical-align: bottom;
 }
