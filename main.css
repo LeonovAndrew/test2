@@ -1503,6 +1503,9 @@ button.btn.sort_ul_btn.dropdown-toggle {
     border-bottom: 1px solid #C5C6C6;
     height: 60px;
 }
+.sravnenie tr:last-child{
+    border-bottom: 1px solid transparent;
+}
 .sravnenie tr:first-child{
     vertical-align: bottom;
 }

@@ -1,5 +1,5 @@
 <?php include_once __DIR__."/header.php";?>
-<section>
+<section class="sect_wrap">
     <div class="container">
         <div class="row">
             <div class="col-12">
