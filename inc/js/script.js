@@ -277,6 +277,16 @@ $(document).ready(function(){
         focusOnSelect: true
     });
 
+    $('.mob_tabs a').click(function(){
+        var url = $(this).attr('href');
+        var name = $(this).text();
+        $('.nav-tabs li a[href="'+url+'"]').tab('show');
+        $(".tabs_btn").text(name);
+    })
+    $('.nav-tabs li a').click(function(){
+        var name = $(this).text();
+        $(".tabs_btn").text(name);
+    })
 });
 
 

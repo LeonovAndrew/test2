@@ -182,6 +182,96 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="count_shop">
+        <div class="modal-dialog  modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h2>Наличие товара (Санкт Петербуг)</h2>
+                    <div class="desc_count_shop_wrap">
+                        <table class="table_count_shop">
+                            <tr>
+                                <td>Название магазина, адрес</td>
+                                <td>Время работы</td>
+                                <td class="tb_have">Забрать товар</td>
+                            </tr>
+                            <tr>
+                                <td class="tb_adress">
+                                    Магазин «1, ул. такая то,д. 25
+                                    ТЦ Европа
+                                </td>
+                                <td class="tb_time">
+                                    <a href="#">Открыто</a><span class="text_ex_small"> - до закрытия 8 часов<br>пн-вс с 8:00 до 22:00</span>
+                                </td>
+                                <td class="tb_have">
+                                    <a href="#">сегодня: 1 шт</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tb_adress">
+                                    Магазин «1, ул. такая то,д. 25
+                                    ТЦ Европа
+                                </td>
+                                <td class="tb_time">
+                                    <a href="#">Открыто</a><span class="text_ex_small"> - до закрытия 8 часов<br>пн-вс с 8:00 до 22:00</span>
+                                </td>
+                                <td class="tb_have">
+                                    <a href="#">сегодня: 1 шт</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tb_adress">
+                                    Магазин «1, ул. такая то,д. 25
+                                    ТЦ Европа
+                                </td>
+                                <td class="tb_time">
+                                    <a href="#">Открыто</a><span class="text_ex_small"> - до закрытия 8 часов<br>пн-вс с 8:00 до 22:00</span>
+                                </td>
+                                <td class="tb_have">
+                                    <a href="#">сегодня: 1 шт</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tb_adress">
+                                    Магазин «1, ул. такая то,д. 25
+                                    ТЦ Европа
+                                </td>
+                                <td class="tb_time">
+                                    <a href="#">Открыто</a><span class="text_ex_small"> - до закрытия 8 часов<br>пн-вс с 8:00 до 22:00</span>
+                                    <a class="for_mob" href="#">сегодня: 1 шт</a>
+                                </td>
+                                <td class="tb_have">
+                                    <a href="#">сегодня: 1 шт</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+                <div class="mod_shop_footer">
+                    <div class="row align-items-center">
+                        <div class="col-sm-2 img_shop_foot">
+                            <img src="image/prod/pr1.png" alt="product">
+                        </div>
+                        <div class="col-sm-4">
+                            <span class="prod_name">
+                                Кальян Alpha Hookah X Black
+                                atte (Черный мат)
+                            </span>
+                        </div>
+                        <div class="col-sm-3">
+                            <span class="price">
+                                2500р
+                            </span>
+                        </div>
+                        <div class="col-sm-3">
+                            <button class="btn_main">В корзину</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <script src="inc/js/jquery.js"></script>
 <script src="inc/js/popper.js"></script>

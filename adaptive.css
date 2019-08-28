@@ -115,7 +115,14 @@
 }
 
 @media (max-width: 991px){
+    .btn_fast_det_wrap .text_for_line {
+        display: block;
+    }
+    .btn_fast_det_wrap .text_for_gird {
+        display: none;
+    }
     /***/
+
     .catalog_wrap.line_gird .prod_img_wrap {
         position: relative;
         width: 20%;
@@ -353,6 +360,36 @@
     }
 }
 @media (max-width: 575px){
+    .tabs_btn {
+        display: block;
+    }
+    .tabs_desct{
+        display: none;
+    }
+    .col_slider_nav {
+        float: left;
+        width: 21%;
+    }
+    .slider_nav_wrap img {
+        height: 60px;
+        margin: auto;
+        width: auto;
+    }
+    .tb_have{
+        display: none;
+    }
+    #count_shop .modal-dialog .modal-body {
+        padding: 15px;
+    }
+    .mod_shop_footer {
+        padding: 15px;
+    }
+    .tb_adress {
+        width: 50%;
+    }
+    .for_mob{
+        display: block;
+    }
     .cat_menu_block{
         z-index: 999;
     }
