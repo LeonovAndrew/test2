@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cf311aa6-a666-4629-8f25-ada02734cc95" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/izbran.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cart.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/adaptive.css" beforeDir="false" afterPath="$PROJECT_DIR$/adaptive.css" afterDir="false" />
@@ -73,7 +73,7 @@
       <workItem from="1565910281078" duration="5744000" />
       <workItem from="1565952444832" duration="30664000" />
       <workItem from="1566100216535" duration="118371000" />
-      <workItem from="1566478270155" duration="110098000" />
+      <workItem from="1566478270155" duration="116907000" />
     </task>
     <servers />
   </component>

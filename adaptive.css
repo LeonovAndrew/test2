@@ -490,6 +490,64 @@
         font-size: 22px;
     }
     /***********************/
+    .cart_prod_step .stepper--style-2{
+        max-width: 100%;
+    }
+    .cart_prod_step .stepper--style-2 [spinner-button="up"], .cart_prod_step .stepper--style-2 [spinner-button="down"] {
+        position: absolute;
+        height: 30px;
+        top: 3px;
+        bottom: -1px;
+        width: 30px;
+        z-index: 1;
+        background-color: #eb653b;
+        color: #fff;
+        border-radius: 50%;
+    }
+    .cart_prod_step .stepper__input {
+        width: 100%;
+        height: 36px;
+        padding: .375rem .75rem;
+        border: 1px solid #c4c4c4;
+        -moz-appearance: textfield;
+        border-radius: 50px;
+        font-weight: 900;
+        color: #666666;
+        font-size: 22px;
+    }
+    /**************************/
+    .cart_prod_img {
+        width: 50%;
+        padding: 5px;
+        float: left;
+        text-align: center;
+    }
+    .fav_cart_text {
+        width: 50%;
+        float: left;
+    }
+    .cart_prod_prise.price_text {
+        width: 50%;
+        float: left;
+        text-align: left;
+        font-weight: 300;
+    }
+    .cart_prod_itog {
+        width: 50%;
+        text-align: left;
+        padding: 10px 0;
+    }
+    .cart_prod_step {
+        width: 50%;
+        float: left;
+        text-align: center;
+    }
+    .col_ob_cart_itog{
+        float: right;
+        width: 50%;
+        text-align: center;
+    }
+    /****************************/
     .tabs_btn {
         display: block;
     }
@@ -679,11 +737,11 @@
         line-height: 15px;
         font-weight: 300;
     }
-    h1,h2{
+    h1,h2,.price_text{
         font-size: 20px;
         line-height: 25px;
     }
-    h4,h3,.price_text{
+    h4,h3{
         font-size: 13px;
         line-height: 16px;
     }
