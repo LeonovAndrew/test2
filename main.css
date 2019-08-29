@@ -23,7 +23,7 @@ h1,h2{
     color: #000000;
     padding: 30px 0;
 }
-h4,h3{
+h4,h3,.price_text{
     font-family: Gilroy;
     font-size: 20px;
     line-height: 25px;
@@ -1514,4 +1514,82 @@ button.btn.sort_ul_btn.dropdown-toggle {
 .hero_slider {
     max-height: 480px;
     overflow: hidden;
+}
+/*************fav*************/
+.top_info {
+    width: 100%;
+    border: 1px solid #EB653B;
+    box-sizing: border-box;
+    padding: 15px;
+    float: left;
+}
+.col_fav_inf {
+    width: 30%;
+    float: left;
+}
+.col_fav_price {
+    width: 15%;
+    float: left;
+}
+.col_fav_step {
+    width: 20%;
+    float: left;
+}
+.col_fav_itog {
+    width: 15%;
+    float: left;
+}
+.fav_prod_img {
+    width: 10%;
+    float: left;
+    padding: 10px;
+}
+.fav_prod_tex {
+    width: 90%;
+    float: left;
+}
+.fav_prod_text {
+    width: 20%;
+    float: left;
+    padding: 5px;
+}
+.fav_prod_prise {
+    width: 15%;
+    float: left;
+    padding: 5px;
+}
+.fav_prod_step {
+    width: 20%;
+    float: left;
+    padding: 5px;
+}
+.fav_prod_btn {
+    width: 12%;
+    float: left;
+    padding: 5px;
+}
+.fav_prod_itog {
+    width: 15%;
+    padding: 5px;
+    float: left;
+}
+.fav_prod_btn_inf {
+    width: 8%;
+    float: right;
+    padding: 5px;
+    text-align: right;
+}
+.fav_prod_row {
+    position: relative;
+}
+.for_mob_inline{
+    display: none;
+}
+.fav_prod_row {
+    width: 100%;
+    padding: 50px 0 10px 0;
+    border-top: 0.999994px solid rgba(235, 101, 59, 0.380392);
+    border-bottom: 0.999994px solid rgba(235, 101, 59, 0.380392);
+    float: left;
+    margin: 15px auto;
 }
