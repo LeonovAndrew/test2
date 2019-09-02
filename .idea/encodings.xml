@@ -1,9 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/about.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/cart.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/carta.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/contact.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/contact_detal.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/detal.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dostavka.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/izbran.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lk_data.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lk_data_dost.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lk_email.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lk_fav.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lk_history.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lk_pwd.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/news.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/opt.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/order1.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/order2-1.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/order2.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/order3.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/order_final.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/registr.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/registr_1.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/registr_2.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/registr_3.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/srav.php" charset="UTF-8" />
   </component>
 </project>

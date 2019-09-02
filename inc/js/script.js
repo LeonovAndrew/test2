@@ -307,7 +307,19 @@ $(document).ready(function(){
         $('.all_map').css("display","none");
         $("#"+data).fadeIn();
     });
-// With JQuery
+
+    $(document).on("click",".btn_registr_w50 .btn_main", function () {
+        $(".btn_registr_w50").removeClass("active");
+        $(".btn_registr_w50").addClass("deactive");
+        $(this).parent().removeClass("deactive")
+        $(this).parent().addClass("active")
+    });
+    $(document).on("click",".map_click", function () {
+        var mapId = $(this).attr("data-map");
+        $(".map").css("display","none");
+        $("#"+mapId).css("display","block");
+
+    });
 
 
 
