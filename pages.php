@@ -9,7 +9,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12">
+            <div class="col-sm-6">
                 <ul>
                     <li>
                         <a href="/">
@@ -101,11 +101,11 @@
                             Новости
                         </a>
                     </li>
-                    <li>
-                        <a href="/opt.php">
-                            Оптовикам
-                        </a>
-                    </li>
+
+                </ul>
+            </div>
+            <div class="col-sm-6">
+                <ul>
                     <li>
                         <a href="/order1.php">
                             Заказы 1
@@ -158,6 +158,7 @@
                     </li>
                 </ul>
             </div>
+
         </div>
     </div>
 </section>
