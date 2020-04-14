@@ -39,6 +39,7 @@ Release Dev:
     - export WEB_ROOT=./app/src
     - export BITRIX_DIR=/home/gitlab-runner/project/medicina-pricelist/bitrix
     - export UPLOAD_DIR=/home/gitlab-runner/project/medicina-pricelist/upload
+    - export PHP_VERSION=php71-apache
     - docker login gitlab.itpeople.dev:4567 -u desin@itpeople.ru -p $ACCESS_TOKEN
   script:
     - HTTP_PORT="$(/home/gitlab-runner/nginx2docker/nginx2docker.py freeport $CI_COMMIT_REF_NAME.$CI_PROJECT_NAME.itpeople.dev)"
