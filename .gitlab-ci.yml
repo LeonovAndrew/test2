@@ -63,7 +63,7 @@ Release Dev:
     - docker exec ${PROJECT_NAME}_php-apache_1 /bin/bash -c "cp -r /tmp/app/. /var/www/html && rm -rf /tmp/app && chown -R www-data:www-data /var/www"
     - docker exec --user www-data ${PROJECT_NAME}_php-apache_1 /bin/bash -c "cd local && composer install"
     - docker exec -i ${PROJECT_NAME}_mysql_1 /bin/bash -c "mysql -uroot -p$MYSQL_ROOT_PASSWORD" < app/dev-starter-db.sql
-    - docker exec ${PROJECT_NAME}_php-apache_1 /bin/bash -c "sh ./app/config.sh"
+    - docker exec ${PROJECT_NAME}_php-apache_1 /bin/bash -c "config.sh"
 #    - docker exec --user www-data ${PROJECT_NAME}_php-apache_1 /bin/bash -c "php bitrix/tools/migrate apply -f"
     - "echo Ссылка на сборку: https://${CI_COMMIT_REF_NAME}.${CI_PROJECT_NAME}.itpeople.dev"
   only:
