@@ -72,13 +72,13 @@ docker exec -i ${PROJECT_NAME}_php-apache_1 /bin/bash -c "echo \"
 <?php
 define(\"BX_USE_MYSQLI\", true);
 define(\"DBPersistent\", false);
-$DBType = \"mysql\";
-$DBHost = \"mysql\";
-$DBLogin = \"root\";
-$DBPassword = \"secret\";
-$DBName = \"medserv\";
-$DBDebug = false;
-$DBDebugToFile = false;
+\\$DBType = \"mysql\";
+\\$DBHost = \"mysql\";
+\\$DBLogin = \"root\";
+\\$DBPassword = \"secret\";
+\\$DBName = \"medserv\";
+\\$DBDebug = false;
+\\$DBDebugToFile = false;
 
 define(\"DELAY_DB_CONNECT\", true);
 define(\"CACHED_b_file\", 3600);
