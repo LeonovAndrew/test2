@@ -1,0 +1,108 @@
+# Здесь описываются этапы выполнения которые не пересекаются на сборке.
+# Можно например использовать build параллельно на нескольких серверах.
+stages:
+  - build
+  - mysql
+  - deploy
+  
+Build Master Container:
+  stage: build # Этап выполнения
+  script:
+    - echo 'Собираем мастер ...'
+    - sleep 4
+  tags: 
+    - develop # Где производится операция, в данном случае dev сервер, можно укзать несколько, находятся в runners
+  only: # Для каких веток используется секция
+    - master # В данном случае только ветка мастер
+    
+# Пример для других веток
+Build dev branch Container:
+  stage: build
+  tags: 
+    - develop
+  before_script:
+    - export PROJECT_NAME=${CI_PROJECT_NAME}_${CI_COMMIT_REF_NAME}
+    - export WEB_ROOT=./app/src
+  script: # Скрипты которые выполняем следующими:
+    - touch "$(pwd)/.env"
+    - echo "HTTP_PORT=8888" >> "$(pwd)/.env"
+    - echo "MYSQL_PORT=3366" >> "$(pwd)/.env"
+    - echo "WEB_ROOT=$WEB_ROOT" >> "$(pwd)/.env"
+    - echo "PHP_VERSION=$PHP_VERSION" >> "$(pwd)/.env"
+    - echo "MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD" >> "$(pwd)/.env"
+    - echo "BITRIX_DIR=/home/gitlab-runner/project/hyundai-crm-backend/bitrix" >> "$(pwd)/.env"
+    - echo "UPLOAD_DIR=/home/gitlab-runner/project/hyundai-crm-backend/upload" >> "$(pwd)/.env"
+    - echo "PMA_ABSOLUTE_URI=https://hyundai-crm-backend.itpeople.dev/pma" >> "$(pwd)/.env"
+    - echo $PHP_VERSION
+    - echo $MYSQL_ROOT_PASSWORD
+    - less "$(pwd)/.env"
+    - docker-compose --verbose -p $PROJECT_NAME -f docker-compose.yml -f docker-compose-dev.yml up --force-recreate -d
+    - docker exec ${PROJECT_NAME}_php-apache_1 /bin/bash -c "chown -R www-data:www-data /var/www"
+    - docker exec --user www-data ${PROJECT_NAME}_php-apache_1 /bin/bash -c "cd local && composer install"
+#    - docker exec -i ${PROJECT_NAME}_mysql_1 /bin/bash -c "mysql -uroot -p$MYSQL_ROOT_PASSWORD" < app/dev-starter-db.sql
+#    - docker exec --user www-data ${PROJECT_NAME}_php-apache_1 /bin/bash -c "php bitrix/tools/migrate apply -f"
+  only: # можно использовать регулярки
+    refs:
+      - dev
+#    changes:
+#      - $PHP_VERSION/Dockerfile
+#      - docker-compose.yml
+#      - docker-compose-dev.yml
+#      - .gitlab-ci.yml
+
+Install Compose Packages:
+  stage: build
+  tags: 
+    - develop
+  before_script:
+    - export PROJECT_NAME=${CI_PROJECT_NAME}_${CI_COMMIT_REF_NAME}
+  script:
+    - docker exec --user www-data ${PROJECT_NAME}_php-apache_1 /bin/bash -c "cd local && composer install"
+  only:
+   changes:
+      - $WEB_ROOT/local/composer.json
+
+Build Mysql:
+  stage: mysql
+  tags: 
+    - develop
+  variables:
+    GIT_STRATEGY: fetch
+    GIT_CHECKOUT: "false"
+  before_script:
+    - export PROJECT_NAME=${CI_PROJECT_NAME}_${CI_COMMIT_REF_NAME}
+  script:
+    - docker exec -i ${PROJECT_NAME}_mysql_1 /bin/bash -c "mysql -uroot -p$MYSQL_ROOT_PASSWORD" < app/dev-starter-db.sql
+    - docker exec --user www-data ${PROJECT_NAME}_php-apache_1 /bin/bash -c "php bitrix/tools/migrate apply -f"
+  only: # можно использовать регулярки
+    refs:
+      - dev
+    changes:
+      - $PHP_VERSION/Dockerfile
+      - docker-compose.yml
+      - docker-compose-dev.yml
+      - .gitlab-ci.yml
+
+Apply Migrations:
+  stage: build
+  tags:
+    - develop
+  before_script:
+    - export PROJECT_NAME=${CI_PROJECT_NAME}_${CI_COMMIT_REF_NAME}
+  script:
+    - docker exec --user www-data ${PROJECT_NAME}_php-apache_1 /bin/bash -c "php bitrix/tools/migrate apply -f"
+  only:
+    changes:
+      - $WEB_ROOT/reducemigrations/*
+
+#Deploy Dev Container:
+#  stage: deploy
+#  variables:
+#    GIT_STRATEGY: fetch
+#  tags:
+#    - develop
+#  script:
+#    - echo 'deploy...'
+#  only: # можно использовать регулярки
+#    refs:
+#      - dev
