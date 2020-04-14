@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   php-apache:
-    image: gitlab.itpeople.dev:4567/hyundai/crm-backend/php-apache:${BRANCH_NAME}
+    image: gitlab.itpeople.dev:4567/medicina/medicina-pricelist/php-apache:${BRANCH_NAME}
     build:
       context: .
       dockerfile: ./${PHP_VERSION}/Dockerfile
