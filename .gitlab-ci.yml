@@ -37,8 +37,8 @@ Release Dev:
   before_script:
     - export PROJECT_NAME=${CI_PROJECT_NAME}_${CI_COMMIT_REF_NAME}
     - export WEB_ROOT=./app/src
-    - export BITRIX_DIR=/home/gitlab-runner/project/hyundai-crm-backend/bitrix
-    - export UPLOAD_DIR=/home/gitlab-runner/project/hyundai-crm-backend/upload
+    - export BITRIX_DIR=/home/gitlab-runner/project/medicina-pricelist/bitrix
+    - export UPLOAD_DIR=/home/gitlab-runner/project/medicina-pricelist/upload
     - docker login gitlab.itpeople.dev:4567 -u desin@itpeople.ru -p $ACCESS_TOKEN
   script:
     - HTTP_PORT="$(/home/gitlab-runner/nginx2docker/nginx2docker.py freeport $CI_COMMIT_REF_NAME.$CI_PROJECT_NAME.itpeople.dev)"
@@ -77,8 +77,8 @@ Release Prod:
     - genesis_prod
   before_script:
     - export WEB_ROOT=./app/src
-    - export BITRIX_DIR=/home/gitlab-runner/projects/hyundai-crm-backend/bitrix
-    - export UPLOAD_DIR=/home/gitlab-runner/projects/hyundai-crm-backend/upload
+    - export BITRIX_DIR=/home/gitlab-runner/project/medicina-pricelist/bitrix
+    - export UPLOAD_DIR=/home/gitlab-runner/project/medicina-pricelist/upload
     - docker login gitlab.itpeople.dev:4567 -u desin@itpeople.ru -p $ACCESS_TOKEN
   script:
     - export HTTP_PORT="$(/home/gitlab-runner/nginx2docker/nginx2docker.py freeport null)"
