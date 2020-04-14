@@ -68,7 +68,6 @@ return array (
 );
 \" >> /var/www/html/bitrix/.settings.php;"
 docker exec -i ${PROJECT_NAME}_php-apache_1 /bin/bash -c "cat /var/www/html/bitrix/.settings.php"
-docker exec -i ${PROJECT_NAME}_php-apache_1 /bin/bash -c "cat /var/www/html/bitrix/php_interface/dbconn.php"
 docker exec -i ${PROJECT_NAME}_php-apache_1 /bin/bash -c "echo \"
 <?php
 define(\"BX_USE_MYSQLI\", true);
@@ -98,3 +97,4 @@ define(\"BX_DIR_PERMISSIONS\", 0755);
 @umask(~(BX_FILE_PERMISSIONS|BX_DIR_PERMISSIONS)&0777);
 define(\"BX_DISABLE_INDEX_PAGE\", true);
 ?>\" >> /var/www/html/bitrix/php_interface/dbconn.php;"
+docker exec -i ${PROJECT_NAME}_php-apache_1 /bin/bash -c "cat /var/www/html/bitrix/php_interface/dbconn.php"
