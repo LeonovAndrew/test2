@@ -9,6 +9,7 @@ Build Image:
   before_script:
     - export PROJECT_NAME=${CI_PROJECT_NAME}_${CI_COMMIT_REF_NAME}
     - export WEB_ROOT=./app/src
+    - export PHP_VERSION=php71-apache
     - docker login gitlab.itpeople.dev:4567 -u desin@itpeople.ru -p $ACCESS_TOKEN
   script:
     - touch "$(pwd)/.env"
@@ -49,7 +50,7 @@ Release Dev:
     - echo "HTTP_PORT=$HTTP_PORT" >> "$(pwd)/.env"
     - echo "MYSQL_PORT=$MYSQL_PORT" >> "$(pwd)/.env"
     - echo "WEB_ROOT=$WEB_ROOT" >> "$(pwd)/.env"
-    - echo "PHP_VERSION=php71-apache" >> "$(pwd)/.env"
+    - echo "PHP_VERSION=$PHP_VERSION" >> "$(pwd)/.env"
     - echo "MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD" >> "$(pwd)/.env"
     - less "$(pwd)/.env"
     - docker-compose -p $PROJECT_NAME pull
@@ -75,7 +76,7 @@ Release Dev:
 Release Prod:
   stage: release
   tags:
-    - genesis_prod
+    - medservice_prod
   before_script:
     - export WEB_ROOT=./app/src
     - export BITRIX_DIR=/home/gitlab-runner/project/medicina-pricelist/bitrix
@@ -91,7 +92,7 @@ Release Prod:
     - echo "WEB_ROOT=$WEB_ROOT" >> "$(pwd)/.env"
     - echo "BITRIX_DIR=$BITRIX_DIR" >> "$(pwd)/.env"
     - echo "UPLOAD_DIR=$UPLOAD_DIR" >> "$(pwd)/.env"
-    - echo "PHP_VERSION=php71-apache" >> "$(pwd)/.env"
+    - echo "PHP_VERSION=$PHP_VERSION" >> "$(pwd)/.env"
     - less "$(pwd)/.env"
     - docker-compose -p $PROJECT_NAME pull
     - docker-compose -p $PROJECT_NAME -f docker-compose.yml -f docker-compose-local.yml -f docker-compose-prod.yml up -d
