@@ -31,7 +31,7 @@ return array (
   array (
     'value' =>
     array (
-      'debug' => false,
+      'debug' => true,
       'handled_errors_types' => 4437,
       'exception_errors_types' => 4437,
       'ignore_silence' => false,
@@ -75,7 +75,7 @@ define(\"DBPersistent\", false);
 \$DBHost = \"mysql\";
 \$DBLogin = \"root\";
 \$DBPassword = \"secret\";
-\$DBName = \"mobility_backend\";
+\$DBName = \"medserv\";
 \$DBDebug = false;
 \$DBDebugToFile = false;
 
