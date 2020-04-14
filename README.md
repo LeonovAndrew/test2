@@ -56,3 +56,7 @@ export PROJECT_NAME=hyundai-crm-backend \
 * coord WYcqjS7ptngN
 * super MlVZg1yCURn9
 * host PNj23Ydis8ut
+
+
+#### Для рабочих миграций:
+Нужно поправить bitrix/modules/ws.reducemigrations/lib/console/command/listcommand.php в этом файле, 78 строка, передать пустой массив в функцию.
