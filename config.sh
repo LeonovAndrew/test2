@@ -67,8 +67,10 @@ return array (
   ),
 );
 \" >> /var/www/html/bitrix/.settings.php;"
-docker exec -i ${PROJECT_NAME}_php-apache_1 /bin/bash -c "cat /var/www/html/bitrix/.settings.php;"
-docker exec -i ${PROJECT_NAME}_php-apache_1 /bin/bash -c "echo \"<?php
+docker exec -i ${PROJECT_NAME}_php-apache_1 /bin/bash -c "cat /var/www/html/bitrix/.settings.php"
+docker exec -i ${PROJECT_NAME}_php-apache_1 /bin/bash -c "cat /var/www/html/bitrix/.php_interface/dbconn.php"
+docker exec -i ${PROJECT_NAME}_php-apache_1 /bin/bash -c "echo \"
+<?php
 define(\"BX_USE_MYSQLI\", true);
 define(\"DBPersistent\", false);
 \$DBType = \"mysql\";
