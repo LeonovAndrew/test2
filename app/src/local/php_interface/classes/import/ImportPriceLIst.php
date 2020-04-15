@@ -9,6 +9,7 @@ class ImportPriceLIst
         $uploadedFile = $_SERVER['DOCUMENT_ROOT'] . '/import.csv';
         $filePath = $uploadedFile;
         $handle = fopen($filePath, "r");
+        \Bitrix\Main\Loader::includeModule('iblock');
         $iblock = \CIBlock::GetList(Array(), Array("CODE"=>'pricelist'), false)->Fetch();
         $elements = \CIBlockElement::GetList
         (
