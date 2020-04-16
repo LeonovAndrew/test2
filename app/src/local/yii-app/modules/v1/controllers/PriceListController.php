@@ -25,6 +25,7 @@ class PriceListController extends Controller
 
     public function actionIndex()
     {
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         $result = new Result();
         $langCode = \Yii::$app->request->get('lang');
         $data = [];
