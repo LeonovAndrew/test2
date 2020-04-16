@@ -13,3 +13,4 @@ $config = require __DIR__ . '/local/yii-app/config/main.php';
 //echo "<pre>".var_export($config, true)."</pre>";
 
 (new yii\web\Application($config))->run();
+header('Access-Control-Allow-Origin: *');
