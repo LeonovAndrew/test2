@@ -85,12 +85,12 @@ class PriceListController extends Controller
 
             $data = $this->prepare($data, $sections);
             $result->setSuccess($data);
-            return $result->getJSON();
+            return $result->getArray();
         }
 
         $arFields = $this->prepare($arFields, $sections);
         $result->setSuccess($arFields);
-        return $result->getJSON();
+        return $result->getArray();
     }
 
     private function prepare($data = [], $sections = []) {
