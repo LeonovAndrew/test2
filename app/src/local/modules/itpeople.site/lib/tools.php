@@ -11,6 +11,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 use Bitrix\Highloadblock;
 use Bitrix\Main;
 use Bitrix\Main\Loader;
+use \PhpOffice\PhpSpreadsheet\IOFactory;
 
 /**
  * Класс содержит небольшой набор инструментов
@@ -92,6 +93,65 @@ class Tools {
 		self::$MODULE_ID = array_pop($tmp);
 		return self::$MODULE_ID;
 	}
+
+    static public function importPricelist($fileArray)
+    {
+        ini_set('memory_limit', '-1');
+        ini_set('max_execution_time', 90000000);
+        $_SERVER['DOCUMENT_ROOT'] = realpath(__DIR__ . '/../../../..');
+        $uploadedFile = $fileArray['tmp_name'];
+        $filePath = $uploadedFile;
+        $handle = fopen($filePath, "r");
+        \Bitrix\Main\Loader::includeModule('iblock');
+        $iblock = \CIBlock::GetList(Array(), Array("CODE"=>'pricelist'), false)->Fetch();
+        $elements = \CIBlockElement::GetList
+        (
+            array(),
+            array('IBLOCK_ID'=>$iblock['ID'],)
+        );
+
+        $sections = \CIBlockSection::GetList
+        (
+            array(),
+            array('IBLOCK_ID'=>$iblock['ID'],)
+        );
+
+        while($element = $sections->Fetch()) {
+            \CIBlockSection::Delete($element['ID']);
+        }
+
+        while($element = $elements->Fetch()) {
+            \CIBlockElement::Delete($element['ID']);
+        }
+
+
+        $codes = [];
+        $ids = [];
+        while (($arRes = fgetcsv($handle, 0, ';')) !== false) {
+            if (!in_array($arRes[0], $codes)) {
+                $section = new \CIBlockSection();
+                $sectionID = $section->Add(['NAME' => $arRes[0], "IBLOCK_ID" => $iblock['ID']]);
+                $codes[] = $arRes[0];
+                $ids[$arRes[0]] = $sectionID;
+            } else {
+                $sectionID = $ids[$arRes[0]];
+            }
+
+            if ($sectionID) {
+                $el = new \CIBlockElement;
+                $el->Add([
+                    'NAME' => trim($arRes[2]),
+                    'IBLOCK_SECTION_ID' => $sectionID,
+                    'IBLOCK_ID' => $iblock['ID'],
+                    'PROPERTY_VALUES' => [
+                        'CODE' => $arRes[1],
+                        'PRICE' => $arRes[4]
+                    ]
+                ]);
+            }
+        }
+
+    }
 	
 	/**
 	 * Получение текущей страницы сайта

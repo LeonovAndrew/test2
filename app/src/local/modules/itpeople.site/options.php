@@ -16,14 +16,14 @@ $arAllOptions = array(
 	['agree_title', 'Заголовок правил', '', ['text', 55]],
 	['agree_text', 'Текст правил', '', ['editor']],*/
 	"ID инфоблоков",
-	['ib_dealer', 'ИБ Дилеры', '', ['text', 55]],
-	['ib_events', 'ИБ Событий', '', ['text', 55]],
+//	['ib_dealer', 'ИБ Дилеры', '', ['text', 55]],
+//	['ib_events', 'ИБ Событий', '', ['text', 55]],
 );
 
 $aTabs = array(
 	array(
 		"DIV" => "edit1",
-		"TAB" => 'Настройки',
+		"TAB" => 'Импорт',
 		"ICON" => "ib_settings",
 		"TITLE" => "Основные настройки"
 	),
@@ -42,6 +42,10 @@ $tabControl = new CAdminTabControl("tabControl", $aTabs);
 
 if($REQUEST_METHOD=="POST" && strlen($Update.$Apply.$RestoreDefaults)>0 && check_bitrix_sessid())
 {
+    if ($_FILES && $_FILES['file']) {
+        \ItPeople\Site\Tools::importPricelist($_FILES['file']);
+    }
+
 	if(strlen($RestoreDefaults)>0)
 	{
 		COption::RemoveOption($module_id);
@@ -107,16 +111,15 @@ $tabControl->Begin();
 <form method="post" action="<?echo $APPLICATION->GetCurPage()?>?mid=<?=urlencode($mid)?>&amp;lang=<?echo LANGUAGE_ID?>" enctype="multipart/form-data">
 	<?=bitrix_sessid_post()?>
 	<?$tabControl->BeginNextTab();?>
-	<?
+    <input type="file" name="file">
+    <?
 	foreach($arAllOptions as $arOption):
 		$val = COption::GetOptionString($module_id, $arOption[0], $arOption[2]);
 		$type = $arOption[3];
 		//__AdmSettingsDrawRow($module_id, $arOption);
 		?>
 		<?if(is_string($arOption)):?>
-        <tr class="heading">
-            <td colspan="2"><?=$arOption?></td>
-        </tr>
+
 	<?else:?>
         <tr>
             <td width="40%" nowrap <?if($type[0]=="textarea" || $type[0]=="editor" || $type[0]=="video" || $type[0]=="image") echo 'class="adm-detail-valign-top"'?>>

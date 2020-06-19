@@ -55,9 +55,9 @@ class ws_m_1586854508_create_highblock_translate extends \WS\ReduceMigrations\Sc
                 ->type(UserField::TYPE_STRING);
 
             $block
-                ->addField('uf_elem')
-                ->label(['ru' => 'Элемент прайслиста'])
-                ->type(UserField::TYPE_IBLOCK_ELEMENT);
+                ->addField('uf_service_code')
+                ->label(['ru' => 'Код услуги'])
+                ->type(UserField::TYPE_STRING);
         });
 
     }
