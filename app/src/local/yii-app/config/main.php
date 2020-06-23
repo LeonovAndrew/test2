@@ -88,6 +88,7 @@ return [
         'POST v1/profile/current' => 'v1/profile/current',
 
         'GET v1/pricelist' => 'v1/price-list/index',
+        'GET /' => 'v1/price-list/index',
       ],
     ],
   ],
