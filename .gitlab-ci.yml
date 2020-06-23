@@ -61,7 +61,7 @@ Release Dev:
     - docker cp $BITRIX_DIR/ ${PROJECT_NAME}_php-apache_1:/tmp/app/bitrix
     - docker cp $UPLOAD_DIR/ ${PROJECT_NAME}_php-apache_1:/tmp/app/upload
     - docker exec ${PROJECT_NAME}_php-apache_1 /bin/bash -c "cp -r /tmp/app/. /var/www/html && rm -rf /tmp/app && chown -R www-data:www-data /var/www"
-    - docker exec --user www-data ${PROJECT_NAME}_php-apache_1 /bin/bash -c "cd local && composer install"
+    - docker exec --user www-data ${PROJECT_NAME}_php-apache_1 /bin/bash -c "cd local && composer install --ignore-platform-reqs"
     - docker exec -i ${PROJECT_NAME}_mysql_1 /bin/bash -c "mysql -uroot -p$MYSQL_ROOT_PASSWORD" < app/dev-starter-db.sql
     - chmod +x ./config.sh && ./config.sh
     - docker exec -i ${PROJECT_NAME}_php-apache_1 /bin/bash -c "cd local && cd cli && php import.php"
