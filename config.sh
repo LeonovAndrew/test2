@@ -76,7 +76,7 @@ define(\\\"DBPersistent\\\", false);
 \\\$DBLogin = \\\"root\\\";
 \\\$DBPassword = \\\"secret\\\";
 \\\$DBName = \\\"medserv\\\";
-\\\$DBDebug = false;
+\\\$DBDebug = true;
 \\\$DBDebugToFile = false;
 
 define(\\\"DELAY_DB_CONNECT\\\", true);
