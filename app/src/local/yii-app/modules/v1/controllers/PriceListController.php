@@ -29,12 +29,12 @@ class PriceListController extends Controller
         $result = new Result();
         $langCode = \Yii::$app->request->get('lang');
         $tag = \Yii::$app->request->get('tag');
-        $data = [];
+        $translates = [];
 
-        if (!in_array($langCode, ['en', 'ch']) && $langCode) {
-            $result->setError('Такого перевода нет');
-            return $result->getJSON();
-        }
+//        if (!in_array($langCode, ['en', 'ch']) && $langCode) {
+//            $result->setError('Такого перевода нет');
+//            return $result->getJSON();
+//        }
 
         \Bitrix\Main\Loader::IncludeModule('iblock');
         if ($tag) {
@@ -88,33 +88,38 @@ class PriceListController extends Controller
 
             while ($arRow = $results->Fetch())
             {
-                $data[] = [
+                $el = \CIBlockElement::GetList([], ['IBLOCK_CODE' => 'pricelist', 'ID' => $arRow['UF_ELEM']], false, [], ["PROPERTY_CODE"])->GetNext();
+
+                $translates[$el["PROPERTY_CODE_VALUE"]] = [
                     'name' => $arRow['UF_TRANSLATE'],
-                    'code' => $arFields[$arRow['UF_SERVICE_CODE']]['code'],
-                    'price' => $arFields[$arRow['UF_SERVICE_CODE']]['price'],
+                    'code' => $arFields[$el["PROPERTY_CODE_VALUE"]]['code'],
+                    'price' => $arFields[$el["PROPERTY_CODE_VALUE"]]['price'],
                     'category' => $arFields['SECTION_ID']
                 ];
             }
-
-            $data = $this->prepare($data, $sections);
-            $result->setSuccess($data);
-            return $result->getArray();
         }
 
-        $arFields = $this->prepare($arFields, $sections);
+        $arFields = $this->prepare($arFields, $sections, $translates);
         $result->setSuccess($arFields);
         return $result->getArray();
     }
 
-    private function prepare($data = [], $sections = []) {
+    private function prepare($data = [], $sections = [], $translates = []) {
         $res = [];
         foreach ($data as $price) {
+
+            if ($translates[$price['code']]) {
+                $price['name'] = $translates[$price['code']]['name'];
+            }
+
+
+            $res[$sections[$price['category']]['id']]['name'] = $sections[$price['category']]['name'];
             $res[$sections[$price['category']]['id']]['data'][] = [
                 'name' => $price['name'],
                 'code' => $price['code'],
                 'price' => $price['price'],
             ];
-            $res[$sections[$price['category']]['id']]['name'] = $sections[$price['category']]['name'];
+
         }
         return $res;
     }
