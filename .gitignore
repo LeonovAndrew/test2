@@ -1,5 +1,4 @@
-backend/*
-mariadb/mysql/*
 .env
 .idea
 mysql/
+mount/

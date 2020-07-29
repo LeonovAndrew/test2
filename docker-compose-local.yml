@@ -1,7 +1,0 @@
-version: '3.7'
-services:
-  php-apache:
-    volumes:
-      - ${WEB_ROOT}:/var/www/html
-      - ${BITRIX_DIR}:/var/www/html/bitrix
-      - ${UPLOAD_DIR}:/var/www/html/upload

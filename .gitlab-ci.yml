@@ -2,69 +2,30 @@ stages:
   - build
   - release
 
-Build Image:
+Build Dev:
   stage: build
   tags:
     - develop
   before_script:
-    - export PROJECT_NAME=${CI_PROJECT_NAME}_${CI_COMMIT_REF_NAME}
-    - export WEB_ROOT=./app/src
-    - export PHP_VERSION=php71-apache
-    - docker login gitlab.itpeople.dev:4567 -u desin@itpeople.ru -p $ACCESS_TOKEN
-  script:
-    - touch "$(pwd)/.env"
-    - echo "BRANCH_NAME=$CI_COMMIT_REF_NAME" >> "$(pwd)/.env"
-    - echo "HTTP_PORT=80" >> "$(pwd)/.env"
-    - echo "MYSQL_PORT=3306" >> "$(pwd)/.env"
-    - echo "WEB_ROOT=$WEB_ROOT" >> "$(pwd)/.env"
-    - echo "PHP_VERSION=$PHP_VERSION" >> "$(pwd)/.env"
-    - echo "MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD" >> "$(pwd)/.env"
-    - less "$(pwd)/.env"
-    - docker-compose -p $PROJECT_NAME -f docker-compose.yml build
-    - docker-compose -p $PROJECT_NAME -f docker-compose.yml push
-    - docker logout
-  only:
-    refs:
-      - master
-      - dev
-      - /^hotfix-.*$/
-      - /^release-.*$/
-      - /^feature-.*$/
-
-Release Dev:
-  stage: release
-  tags:
-    - develop
-  before_script:
-    - export PROJECT_NAME=${CI_PROJECT_NAME}_${CI_COMMIT_REF_NAME}
-    - export WEB_ROOT=./app/src
+    - export COMPOSE_PROJECT_NAME=${CI_PROJECT_NAME}_${CI_COMMIT_REF_NAME}
+    - export BRANCH_NAME=${CI_COMMIT_REF_NAME}
+    - export MYSQL_ROOT_PASSWORD=zxeXHZpy9ofW
     - export BITRIX_DIR=/home/gitlab-runner/project/medicina-pricelist/bitrix
     - export UPLOAD_DIR=/home/gitlab-runner/project/medicina-pricelist/upload
-    - export PHP_VERSION=php71-apache
-    - docker login gitlab.itpeople.dev:4567 -u desin@itpeople.ru -p $ACCESS_TOKEN
+    - export COMPOSE_INTERACTIVE_NO_CLI=1
   script:
-    - HTTP_PORT="$(/home/gitlab-runner/nginx2docker/nginx2docker.py freeport $CI_COMMIT_REF_NAME.$CI_PROJECT_NAME.itpeople.dev)"
-    - MYSQL_PORT="$(/home/gitlab-runner/nginx2docker/nginx2docker.py freeport null 1)"
+    - export HTTP_PORT="$(/home/gitlab-runner/nginx2docker/nginx2docker.py freeport $CI_COMMIT_REF_NAME.$CI_PROJECT_NAME.itpeople.dev)"
+    - export MYSQL_PORT="$(/home/gitlab-runner/nginx2docker/nginx2docker.py freeport null 1)"
     - touch "$(pwd)/.env"
-    - echo "BRANCH_NAME=$CI_COMMIT_REF_NAME" >> "$(pwd)/.env"
-    - echo "HTTP_PORT=$HTTP_PORT" >> "$(pwd)/.env"
-    - echo "MYSQL_PORT=$MYSQL_PORT" >> "$(pwd)/.env"
-    - echo "WEB_ROOT=$WEB_ROOT" >> "$(pwd)/.env"
-    - echo "PHP_VERSION=$PHP_VERSION" >> "$(pwd)/.env"
-    - echo "MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD" >> "$(pwd)/.env"
-    - less "$(pwd)/.env"
-    - docker-compose -p $PROJECT_NAME pull
+    - echo "MYSQL_HOST=mysql" >> "$(pwd)/.env"
+    - echo "MYSQL_USER=root" >> "$(pwd)/.env"
+    - echo "MYSQL_PASSWORD=$MYSQL_ROOT_PASSWORD" >> "$(pwd)/.env"
+    - echo "MYSQL_DATABASE=medicina_pricelist" >> "$(pwd)/.env"
+    - echo "DEBUG=true" >> "$(pwd)/.env"
+#    - less "$(pwd)/.env"
+    - docker-compose -p $COMPOSE_PROJECT_NAME -f docker-compose.yml -f docker-compose-dev.yml up -d --build --force-recreate
+    - docker exec -i ${COMPOSE_PROJECT_NAME}_mysql_1 /bin/bash -c "mysql -uroot --password='${MYSQL_ROOT_PASSWORD}'" < ./.docker/mysql/dump.sql
     - /home/gitlab-runner/nginx2docker/nginx2docker.py add-to-pool $CI_COMMIT_REF_NAME.$CI_PROJECT_NAME.itpeople.dev null $HTTP_PORT
-    - docker-compose -p $PROJECT_NAME -f docker-compose.yml -f docker-compose-mysql.yml down
-    - docker-compose -p $PROJECT_NAME -f docker-compose.yml -f docker-compose-mysql.yml up -d
-    - docker cp $WEB_ROOT/. ${PROJECT_NAME}_php-apache_1:/tmp/app
-    - docker cp $BITRIX_DIR/ ${PROJECT_NAME}_php-apache_1:/tmp/app/bitrix
-    - docker cp $UPLOAD_DIR/ ${PROJECT_NAME}_php-apache_1:/tmp/app/upload
-    - docker exec ${PROJECT_NAME}_php-apache_1 /bin/bash -c "cp -r /tmp/app/. /var/www/html && rm -rf /tmp/app && chown -R www-data:www-data /var/www"
-    - docker exec --user www-data ${PROJECT_NAME}_php-apache_1 /bin/bash -c "cd local && composer install --ignore-platform-reqs"
-    - docker exec -i ${PROJECT_NAME}_mysql_1 /bin/bash -c "mysql -uroot -p$MYSQL_ROOT_PASSWORD" < app/dev-starter-db.sql
-    - chmod +x ./config.sh && ./config.sh
-#    - docker exec --user www-data ${PROJECT_NAME}_php-apache_1 /bin/bash -c "php bitrix/tools/migrate apply -f"
     - "echo Ссылка на сборку: https://${CI_COMMIT_REF_NAME}.${CI_PROJECT_NAME}.itpeople.dev"
   only:
     refs:
@@ -74,30 +35,60 @@ Release Dev:
       - /^release-.*$/
       - /^feature-.*$/
 
+Build Prod:
+  stage: build
+  tags:
+    - develop
+  before_script:
+    - export BRANCH_NAME=${CI_COMMIT_REF_NAME}
+    - export HOST_MACHINE_IP=178.159.249.31
+    - export BITRIX_DIR=/home/gitlab-runner/project/medicina-pricelist/bitrix
+    - export UPLOAD_DIR=/home/gitlab-runner/project/medicina-pricelist/upload
+    - export COMPOSE_INTERACTIVE_NO_CLI=1
+    - docker login gitlab.itpeople.dev:4567 -u desin@itpeople.ru -p $ACCESS_TOKEN
+  script:
+    - export HTTP_PORT=80
+    - export COMPOSE_PROJECT_NAME=production_${CI_PROJECT_NAME}_${CI_COMMIT_REF_NAME}_${HTTP_PORT}
+    - touch "$(pwd)/.env"
+    - echo "MYSQL_HOST=mysql" >> "$(pwd)/.env"
+    - echo "MYSQL_USER=$MYSQL_USER" >> "$(pwd)/.env"
+    - echo "MYSQL_PASSWORD=$MYSQL_PASSWORD" >> "$(pwd)/.env"
+    - echo "MYSQL_DATABASE=$MYSQL_DATABASE" >> "$(pwd)/.env"
+#    - echo "DEBUG=true" >> "$(pwd)/.env"
+#    - less "$(pwd)/.env"
+    - docker-compose -p $COMPOSE_PROJECT_NAME -f docker-compose.yml -f docker-compose-prod.yml build
+    - docker-compose -p $COMPOSE_PROJECT_NAME -f docker-compose.yml -f docker-compose-prod.yml push
+    - docker logout
+  only:
+    - master
+  when: manual
+
+
 Release Prod:
   stage: release
   tags:
-    - medservice_prod
+    - develop
   before_script:
-    - export WEB_ROOT=./app/src
+    - export BRANCH_NAME=${CI_COMMIT_REF_NAME}
+    - export HOST_MACHINE_IP=178.159.249.31
     - export BITRIX_DIR=/home/gitlab-runner/project/medicina-pricelist/bitrix
     - export UPLOAD_DIR=/home/gitlab-runner/project/medicina-pricelist/upload
-    - export PHP_VERSION=php71-apache
+    - export COMPOSE_INTERACTIVE_NO_CLI=1
     - docker login gitlab.itpeople.dev:4567 -u desin@itpeople.ru -p $ACCESS_TOKEN
   script:
     - export HTTP_PORT="$(/home/gitlab-runner/nginx2docker/nginx2docker.py freeport null)"
-    - export PROJECT_NAME=${CI_PROJECT_NAME}_${CI_COMMIT_REF_NAME}_${HTTP_PORT}
+    - export COMPOSE_PROJECT_NAME=production_${CI_PROJECT_NAME}_${CI_COMMIT_REF_NAME}_${HTTP_PORT}
     - touch "$(pwd)/.env"
-    - echo "BRANCH_NAME=$CI_COMMIT_REF_NAME" >> "$(pwd)/.env"
-    - echo "HTTP_PORT=$HTTP_PORT" >> "$(pwd)/.env"
-    - echo "WEB_ROOT=$WEB_ROOT" >> "$(pwd)/.env"
-    - echo "BITRIX_DIR=$BITRIX_DIR" >> "$(pwd)/.env"
-    - echo "UPLOAD_DIR=$UPLOAD_DIR" >> "$(pwd)/.env"
-    - echo "PHP_VERSION=$PHP_VERSION" >> "$(pwd)/.env"
-    - less "$(pwd)/.env"
-    - docker-compose -p $PROJECT_NAME pull
-    - docker-compose -p $PROJECT_NAME -f docker-compose.yml -f docker-compose-local.yml -f docker-compose-prod.yml up -d
-    - chmod +x ./build.sh && ./build.sh
+    - echo "MYSQL_HOST=mysql" >> "$(pwd)/.env"
+    - echo "MYSQL_USER=$MYSQL_USER" >> "$(pwd)/.env"
+    - echo "MYSQL_PASSWORD=$MYSQL_PASSWORD" >> "$(pwd)/.env"
+    - echo "MYSQL_DATABASE=$MYSQL_DATABASE" >> "$(pwd)/.env"
+#    - echo "DEBUG=true" >> "$(pwd)/.env"
+#    - less "$(pwd)/.env"
+    - docker-compose -p $COMPOSE_PROJECT_NAME -f docker-compose.yml -f docker-compose-prod.yml pull
+    - docker-compose -p $COMPOSE_PROJECT_NAME -f docker-compose.yml -f docker-compose-prod.yml up -d --force-recreate
+    - docker logout
+    - "echo Новый порт: ${HTTP_PORT}"
   only:
     - master
   when: manual

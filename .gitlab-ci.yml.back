@@ -1,108 +1,103 @@
-# Здесь описываются этапы выполнения которые не пересекаются на сборке.
-# Можно например использовать build параллельно на нескольких серверах.
 stages:
   - build
-  - mysql
-  - deploy
-  
-Build Master Container:
-  stage: build # Этап выполнения
-  script:
-    - echo 'Собираем мастер ...'
-    - sleep 4
-  tags: 
-    - develop # Где производится операция, в данном случае dev сервер, можно укзать несколько, находятся в runners
-  only: # Для каких веток используется секция
-    - master # В данном случае только ветка мастер
-    
-# Пример для других веток
-Build dev branch Container:
-  stage: build
-  tags: 
-    - develop
-  before_script:
-    - export PROJECT_NAME=${CI_PROJECT_NAME}_${CI_COMMIT_REF_NAME}
-    - export WEB_ROOT=./app/src
-  script: # Скрипты которые выполняем следующими:
-    - touch "$(pwd)/.env"
-    - echo "HTTP_PORT=8888" >> "$(pwd)/.env"
-    - echo "MYSQL_PORT=3366" >> "$(pwd)/.env"
-    - echo "WEB_ROOT=$WEB_ROOT" >> "$(pwd)/.env"
-    - echo "PHP_VERSION=$PHP_VERSION" >> "$(pwd)/.env"
-    - echo "MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD" >> "$(pwd)/.env"
-    - echo "BITRIX_DIR=/home/gitlab-runner/project/hyundai-crm-backend/bitrix" >> "$(pwd)/.env"
-    - echo "UPLOAD_DIR=/home/gitlab-runner/project/hyundai-crm-backend/upload" >> "$(pwd)/.env"
-    - echo "PMA_ABSOLUTE_URI=https://hyundai-crm-backend.itpeople.dev/pma" >> "$(pwd)/.env"
-    - echo $PHP_VERSION
-    - echo $MYSQL_ROOT_PASSWORD
-    - less "$(pwd)/.env"
-    - docker-compose --verbose -p $PROJECT_NAME -f docker-compose.yml -f docker-compose-dev.yml up --force-recreate -d
-    - docker exec ${PROJECT_NAME}_php-apache_1 /bin/bash -c "chown -R www-data:www-data /var/www"
-    - docker exec --user www-data ${PROJECT_NAME}_php-apache_1 /bin/bash -c "cd local && composer install"
-#    - docker exec -i ${PROJECT_NAME}_mysql_1 /bin/bash -c "mysql -uroot -p$MYSQL_ROOT_PASSWORD" < app/dev-starter-db.sql
-#    - docker exec --user www-data ${PROJECT_NAME}_php-apache_1 /bin/bash -c "php bitrix/tools/migrate apply -f"
-  only: # можно использовать регулярки
-    refs:
-      - dev
-#    changes:
-#      - $PHP_VERSION/Dockerfile
-#      - docker-compose.yml
-#      - docker-compose-dev.yml
-#      - .gitlab-ci.yml
+  - release
 
-Install Compose Packages:
-  stage: build
-  tags: 
-    - develop
-  before_script:
-    - export PROJECT_NAME=${CI_PROJECT_NAME}_${CI_COMMIT_REF_NAME}
-  script:
-    - docker exec --user www-data ${PROJECT_NAME}_php-apache_1 /bin/bash -c "cd local && composer install"
-  only:
-   changes:
-      - $WEB_ROOT/local/composer.json
-
-Build Mysql:
-  stage: mysql
-  tags: 
-    - develop
-  variables:
-    GIT_STRATEGY: fetch
-    GIT_CHECKOUT: "false"
-  before_script:
-    - export PROJECT_NAME=${CI_PROJECT_NAME}_${CI_COMMIT_REF_NAME}
-  script:
-    - docker exec -i ${PROJECT_NAME}_mysql_1 /bin/bash -c "mysql -uroot -p$MYSQL_ROOT_PASSWORD" < app/dev-starter-db.sql
-    - docker exec --user www-data ${PROJECT_NAME}_php-apache_1 /bin/bash -c "php bitrix/tools/migrate apply -f"
-  only: # можно использовать регулярки
-    refs:
-      - dev
-    changes:
-      - $PHP_VERSION/Dockerfile
-      - docker-compose.yml
-      - docker-compose-dev.yml
-      - .gitlab-ci.yml
-
-Apply Migrations:
+Build Image:
   stage: build
   tags:
     - develop
   before_script:
     - export PROJECT_NAME=${CI_PROJECT_NAME}_${CI_COMMIT_REF_NAME}
+    - export WEB_ROOT=./app/src
+    - export PHP_VERSION=php71-apache
+    - docker login gitlab.itpeople.dev:4567 -u desin@itpeople.ru -p $ACCESS_TOKEN
   script:
-    - docker exec --user www-data ${PROJECT_NAME}_php-apache_1 /bin/bash -c "php bitrix/tools/migrate apply -f"
+    - touch "$(pwd)/.env"
+    - echo "BRANCH_NAME=$CI_COMMIT_REF_NAME" >> "$(pwd)/.env"
+    - echo "HTTP_PORT=80" >> "$(pwd)/.env"
+    - echo "MYSQL_PORT=3306" >> "$(pwd)/.env"
+    - echo "WEB_ROOT=$WEB_ROOT" >> "$(pwd)/.env"
+    - echo "PHP_VERSION=$PHP_VERSION" >> "$(pwd)/.env"
+    - echo "MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD" >> "$(pwd)/.env"
+    - less "$(pwd)/.env"
+    - docker-compose -p $PROJECT_NAME -f docker-compose.yml build
+    - docker-compose -p $PROJECT_NAME -f docker-compose.yml push
+    - docker logout
   only:
-    changes:
-      - $WEB_ROOT/reducemigrations/*
+    refs:
+      - master
+      - dev
+      - /^hotfix-.*$/
+      - /^release-.*$/
+      - /^feature-.*$/
 
-#Deploy Dev Container:
-#  stage: deploy
-#  variables:
-#    GIT_STRATEGY: fetch
-#  tags:
-#    - develop
-#  script:
-#    - echo 'deploy...'
-#  only: # можно использовать регулярки
-#    refs:
-#      - dev
+Release Dev:
+  stage: release
+  tags:
+    - develop
+  before_script:
+    - export PROJECT_NAME=${CI_PROJECT_NAME}_${CI_COMMIT_REF_NAME}
+    - export WEB_ROOT=./app/src
+    - export BITRIX_DIR=/home/gitlab-runner/project/medicina-pricelist/bitrix
+    - export UPLOAD_DIR=/home/gitlab-runner/project/medicina-pricelist/upload
+    - export PHP_VERSION=php71-apache
+    - docker login gitlab.itpeople.dev:4567 -u desin@itpeople.ru -p $ACCESS_TOKEN
+  script:
+    - HTTP_PORT="$(/home/gitlab-runner/nginx2docker/nginx2docker.py freeport $CI_COMMIT_REF_NAME.$CI_PROJECT_NAME.itpeople.dev)"
+    - MYSQL_PORT="$(/home/gitlab-runner/nginx2docker/nginx2docker.py freeport null 1)"
+    - touch "$(pwd)/.env"
+    - echo "BRANCH_NAME=$CI_COMMIT_REF_NAME" >> "$(pwd)/.env"
+    - echo "HTTP_PORT=$HTTP_PORT" >> "$(pwd)/.env"
+    - echo "MYSQL_PORT=$MYSQL_PORT" >> "$(pwd)/.env"
+    - echo "WEB_ROOT=$WEB_ROOT" >> "$(pwd)/.env"
+    - echo "PHP_VERSION=$PHP_VERSION" >> "$(pwd)/.env"
+    - echo "MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD" >> "$(pwd)/.env"
+    - less "$(pwd)/.env"
+    - docker-compose -p $PROJECT_NAME pull
+    - /home/gitlab-runner/nginx2docker/nginx2docker.py add-to-pool $CI_COMMIT_REF_NAME.$CI_PROJECT_NAME.itpeople.dev null $HTTP_PORT
+    - docker-compose -p $PROJECT_NAME -f docker-compose.yml -f docker-compose-mysql.yml down
+    - docker-compose -p $PROJECT_NAME -f docker-compose.yml -f docker-compose-mysql.yml up -d
+    - docker cp $WEB_ROOT/. ${PROJECT_NAME}_php-apache_1:/tmp/app
+    - docker cp $BITRIX_DIR/ ${PROJECT_NAME}_php-apache_1:/tmp/app/bitrix
+    - docker cp $UPLOAD_DIR/ ${PROJECT_NAME}_php-apache_1:/tmp/app/upload
+    - docker exec ${PROJECT_NAME}_php-apache_1 /bin/bash -c "cp -r /tmp/app/. /var/www/html && rm -rf /tmp/app && chown -R www-data:www-data /var/www"
+    - docker exec --user www-data ${PROJECT_NAME}_php-apache_1 /bin/bash -c "cd local && composer install --ignore-platform-reqs"
+    - docker exec -i ${PROJECT_NAME}_mysql_1 /bin/bash -c "mysql -uroot -p$MYSQL_ROOT_PASSWORD" < app/dev-starter-db.sql
+    - chmod +x ./config.sh && ./config.sh
+#    - docker exec --user www-data ${PROJECT_NAME}_php-apache_1 /bin/bash -c "php bitrix/tools/migrate apply -f"
+    - "echo Ссылка на сборку: https://${CI_COMMIT_REF_NAME}.${CI_PROJECT_NAME}.itpeople.dev"
+  only:
+    refs:
+      - master
+      - dev
+      - /^hotfix-.*$/
+      - /^release-.*$/
+      - /^feature-.*$/
+
+Release Prod:
+  stage: release
+  tags:
+    - medservice_prod
+  before_script:
+    - export WEB_ROOT=./app/src
+    - export BITRIX_DIR=/home/gitlab-runner/project/medicina-pricelist/bitrix
+    - export UPLOAD_DIR=/home/gitlab-runner/project/medicina-pricelist/upload
+    - export PHP_VERSION=php71-apache
+    - docker login gitlab.itpeople.dev:4567 -u desin@itpeople.ru -p $ACCESS_TOKEN
+  script:
+    - export HTTP_PORT="$(/home/gitlab-runner/nginx2docker/nginx2docker.py freeport null)"
+    - export PROJECT_NAME=${CI_PROJECT_NAME}_${CI_COMMIT_REF_NAME}_${HTTP_PORT}
+    - touch "$(pwd)/.env"
+    - echo "BRANCH_NAME=$CI_COMMIT_REF_NAME" >> "$(pwd)/.env"
+    - echo "HTTP_PORT=$HTTP_PORT" >> "$(pwd)/.env"
+    - echo "WEB_ROOT=$WEB_ROOT" >> "$(pwd)/.env"
+    - echo "BITRIX_DIR=$BITRIX_DIR" >> "$(pwd)/.env"
+    - echo "UPLOAD_DIR=$UPLOAD_DIR" >> "$(pwd)/.env"
+    - echo "PHP_VERSION=$PHP_VERSION" >> "$(pwd)/.env"
+    - less "$(pwd)/.env"
+    - docker-compose -p $PROJECT_NAME pull
+    - docker-compose -p $PROJECT_NAME -f docker-compose.yml -f docker-compose-local.yml -f docker-compose-prod.yml up -d
+    - chmod +x ./build.sh && ./build.sh
+  only:
+    - master
+  when: manual

@@ -1,5 +1,10 @@
 version: '3.7'
 services:
   php-apache:
+    image: gitlab.itpeople.dev:4567/medicina/medicina-pricelist/php-apache:${BRANCH_NAME}-prod
+    build:
+      args:
+        APACHE_USER_ID: 1007
+        APACHE_GROUP_ID: 1007
     extra_hosts:
-      - "mariadb:176.99.2.137"
+      - "mysql:${HOST_MACHINE_IP}"
