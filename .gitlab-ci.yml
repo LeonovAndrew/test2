@@ -41,7 +41,7 @@ Build Prod:
     - develop
   before_script:
     - export BRANCH_NAME=${CI_COMMIT_REF_NAME}
-    - export HOST_MACHINE_IP=178.159.249.31
+    - export HOST_MACHINE_IP=10.1.157.94
     - export BITRIX_DIR=/home/gitlab-runner/project/medicina-pricelist/bitrix
     - export UPLOAD_DIR=/home/gitlab-runner/project/medicina-pricelist/upload
     - export COMPOSE_INTERACTIVE_NO_CLI=1
@@ -67,10 +67,10 @@ Build Prod:
 Release Prod:
   stage: release
   tags:
-    - develop
+    - medicina1
   before_script:
     - export BRANCH_NAME=${CI_COMMIT_REF_NAME}
-    - export HOST_MACHINE_IP=178.159.249.31
+    - export HOST_MACHINE_IP=10.1.157.94
     - export BITRIX_DIR=/home/gitlab-runner/project/medicina-pricelist/bitrix
     - export UPLOAD_DIR=/home/gitlab-runner/project/medicina-pricelist/upload
     - export COMPOSE_INTERACTIVE_NO_CLI=1
