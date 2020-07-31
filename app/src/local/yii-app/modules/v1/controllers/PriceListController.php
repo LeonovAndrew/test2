@@ -38,7 +38,11 @@ class PriceListController extends Controller
 
         \Bitrix\Main\Loader::IncludeModule('iblock');
         if ($tag) {
-            $tags = \CIBlockElement::GetList([], ['IBLOCK_CODE' => 'tags', 'NAME'=>$tag], false, [], ["*"])->GetNextElement()->GetProperties()['CODE']['VALUE'];
+            $tags = \CIBlockElement::GetList([], ['IBLOCK_CODE' => 'tags', 'NAME'=>$tag], false, [], ["*"])->GetNextElement();
+            if ($tags) {
+                $tags = $tags->GetProperties()['CODE']['VALUE'];
+            }
+
             $secRes = \CIBlockSection::GetList([], ['IBLOCK_CODE' => 'pricelist', 'NAME'=>$tags], false, ['NAME', "ID"], false);
             $secs = [];
             while($sec = $secRes->GetNext()) {
@@ -88,8 +92,8 @@ class PriceListController extends Controller
 
             while ($arRow = $results->Fetch())
             {
-                $el = \CIBlockElement::GetList([], ['IBLOCK_CODE' => 'pricelist', 'ID' => $arRow['UF_ELEM']], false, [], ["PROPERTY_CODE"])->GetNext();
 
+                $el = \CIBlockElement::GetList([], ['IBLOCK_CODE' => 'pricelist', 'PROPERTY_CODE' => $arRow['UF_SERVICE_CODE']], false, [], ["PROPERTY_CODE"])->GetNext();
                 $translates[$el["PROPERTY_CODE_VALUE"]] = [
                     'name' => $arRow['UF_TRANSLATE'],
                     'code' => $arFields[$el["PROPERTY_CODE_VALUE"]]['code'],
