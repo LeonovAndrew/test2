@@ -43,16 +43,26 @@ class PriceListController extends Controller
             foreach ($tag as $tagItem) {
                 $tagsForSearch[] = trim($tagItem);
             }
+
             $tags = \CIBlockElement::GetList([], ['IBLOCK_CODE' => 'tags', 'NAME'=>$tagsForSearch], false, [], ["*"]);
             $sections = [];
             $services = [];
             while ($tag = $tags->GetNextElement()) {
-                if ($tag) {
-                    $sections = array_merge($sections, $tag->GetProperties()['CODE']['VALUE']);
-                    $services = array_merge($services, $tag->GetProperties()['SERVICE_CODE']['VALUE']);
+                $sectionsItems[] = $tag->GetProperties()['CODE']['VALUE'];
+                $servicesItems[] = $tag->GetProperties()['SERVICE_CODE']['VALUE'];
+            }
+
+            foreach ($sectionsItems as $section) {
+                foreach ($section as $item) {
+                    $sections[] = $item;
                 }
             }
 
+            foreach ($servicesItems as $service) {
+                foreach ($service as $item) {
+                    $services[] = $item;
+                }
+            }
 
             $secRes = \CIBlockSection::GetList([], ['IBLOCK_CODE' => 'pricelist', 'NAME'=>$sections], false, ['NAME', "ID"], false);
             $secs = [];
@@ -60,7 +70,9 @@ class PriceListController extends Controller
                 $secs[] = $sec['ID'];
             }
 
+
             if ($sections != null && $services != null) {
+
                 $elFilter = ['IBLOCK_CODE' => 'pricelist', [
                     "LOGIC" => "OR",
                     ['IBLOCK_SECTION_ID' => $secs],
