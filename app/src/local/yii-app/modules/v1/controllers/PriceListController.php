@@ -71,7 +71,8 @@ class PriceListController extends Controller
             } elseif ($sections == null && $services != null)  {
                 $elFilter = ['IBLOCK_CODE' => 'pricelist', 'PROPERTY_CODE' => $services];
             } else {
-                $elFilter = ['IBLOCK_CODE' => 'pricelist'];
+                $result->setError('По тегу ничего не найдено');
+                return $result->getArray();
             }
 
         } else {
