@@ -38,18 +38,42 @@ class PriceListController extends Controller
 
         \Bitrix\Main\Loader::IncludeModule('iblock');
         if ($tag) {
-            $tags = \CIBlockElement::GetList([], ['IBLOCK_CODE' => 'tags', 'NAME'=>$tag], false, [], ["*"])->GetNextElement();
-            if ($tags) {
-                $tags = $tags->GetProperties()['CODE']['VALUE'];
+            $tag = explode(',', $tag);
+            $tagsForSearch = [];
+            foreach ($tag as $tagItem) {
+                $tagsForSearch[] = trim($tagItem);
+            }
+            $tags = \CIBlockElement::GetList([], ['IBLOCK_CODE' => 'tags', 'NAME'=>$tagsForSearch], false, [], ["*"]);
+            $sections = [];
+            $services = [];
+            while ($tag = $tags->GetNextElement()) {
+                if ($tag) {
+                    $sections = array_merge($sections, $tag->GetProperties()['CODE']['VALUE']);
+                    $services = array_merge($services, $tag->GetProperties()['SERVICE_CODE']['VALUE']);
+                }
             }
 
-            $secRes = \CIBlockSection::GetList([], ['IBLOCK_CODE' => 'pricelist', 'NAME'=>$tags], false, ['NAME', "ID"], false);
+
+            $secRes = \CIBlockSection::GetList([], ['IBLOCK_CODE' => 'pricelist', 'NAME'=>$sections], false, ['NAME', "ID"], false);
             $secs = [];
             while($sec = $secRes->GetNext()) {
                 $secs[] = $sec['ID'];
             }
 
-            $elFilter = ['IBLOCK_CODE' => 'pricelist', 'IBLOCK_SECTION_ID' => $secs];
+            if ($sections != null && $services != null) {
+                $elFilter = ['IBLOCK_CODE' => 'pricelist', [
+                    "LOGIC" => "OR",
+                    ['IBLOCK_SECTION_ID' => $secs],
+                    ["PROPERTY_CODE" => $services]
+                ]];
+            } elseif ($sections != null && $services == null) {
+                $elFilter = ['IBLOCK_CODE' => 'pricelist', 'IBLOCK_SECTION_ID' => $secs];
+            } elseif ($sections == null && $services != null)  {
+                $elFilter = ['IBLOCK_CODE' => 'pricelist', 'PROPERTY_CODE' => $services];
+            } else {
+                $elFilter = ['IBLOCK_CODE' => 'pricelist'];
+            }
+
         } else {
             $elFilter = ['IBLOCK_CODE' => 'pricelist'];
         }
