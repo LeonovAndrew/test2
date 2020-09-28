@@ -1,0 +1,4 @@
+./mount
+./mysql
+./app/src/local/vendor
+./.idea

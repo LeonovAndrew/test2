@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+  php-apache:
+    build:
+      args:
+        APACHE_USER_ID: 1000
+        APACHE_GROUP_ID: 1000
+    depends_on:
+      - mysql
+  mysql:
+    image: mariadb:10.4-bionic
+    ports:
+      - ${MYSQL_PORT}:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    restart: always

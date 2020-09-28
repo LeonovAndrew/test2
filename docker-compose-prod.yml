@@ -1,0 +1,10 @@
+version: '3.7'
+services:
+  php-apache:
+    image: gitlab.itpeople.dev:4567/medicina/medicina-pricelist/php-apache:${BRANCH_NAME}-prod
+    build:
+      args:
+        APACHE_USER_ID: 598
+        APACHE_GROUP_ID: 596
+    extra_hosts:
+      - "mysql:${HOST_MACHINE_IP}"
